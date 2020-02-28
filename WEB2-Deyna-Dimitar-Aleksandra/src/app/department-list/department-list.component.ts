@@ -9,7 +9,7 @@ export class DepartmentListComponent implements OnInit {
 
   constructor() { }
 
-  departments: string[] = ['IT', 'HR', 'Finance'];
+  departments: string[] = ['Finance', 'IT', 'HR'];
 
   ngOnInit(): void {
   }
