@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TASKS, Task} from '../interfaces/task';
 
 @Component({
   selector: 'app-task-list',
@@ -9,7 +10,7 @@ export class TaskListComponent implements OnInit {
 
   constructor() { }
 
-  tasks: string[] = ['print', 'send email', 'finish week 2 assignments'];
+  tasks:Task[] = TASKS;
 
   ngOnInit() {
   }
