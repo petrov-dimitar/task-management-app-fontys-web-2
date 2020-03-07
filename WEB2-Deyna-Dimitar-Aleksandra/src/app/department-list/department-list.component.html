@@ -1,15 +1,40 @@
 <div>
   <h2>Departments</h2>
   <h3>Create Department</h3>
-  <input type="text" />
+
+  <input type="text" placeholder="Unique ID" [(ngModel)]="newID" />
+  <input
+    type="text"
+    placeholder="Department Name"
+    [(ngModel)]="newDepartmentName"
+  />
+  <input
+    type="text"
+    placeholder="Description"
+    [(ngModel)]="newDepartmentDescription"
+  />
+  <button (click)="addDepartment()">Create Department</button>
+
+  <select name="" id="">
+    <option *ngFor="let task of tasks"></option>
+  </select>
   <h3>List Departments</h3>
   <ul>
-    <li *ngFor="let department of departments">
-      {{ department.id }} {{ department.depnName }}
+    <li
+      (click)="selectDepartment(department)"
+      *ngFor="let department of departments"
+    >
+      {{ department.id }} {{ department.depName }}
       <p>{{ department.description }}</p>
       <span
         ><button (click)="deleteDepartment(department)">Delete</button></span
       >
     </li>
   </ul>
+  <h3>Edit Departments</h3>
+  <input
+    *ngIf="selectedDepartment"
+    type="text"
+    [(ngModel)]="selectedDepartment.depName"
+  />
 </div>

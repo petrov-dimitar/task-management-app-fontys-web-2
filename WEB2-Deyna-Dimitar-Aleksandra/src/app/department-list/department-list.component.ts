@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Department } from '../interfaces/department';
-import { NgForm } from '@angular/forms';
+import { Task } from '../interfaces/task';
+
 
 @Component({
   selector: 'app-department-list',
@@ -10,8 +11,12 @@ import { NgForm } from '@angular/forms';
 export class DepartmentListComponent implements OnInit {
 
   constructor() { }
-
+  newID: string;
+  newDepartmentName: string;
+  newDepartmentDescription: string;
+  tasks: Task[];
   departments: Department[] = [{ id: '1', depName: 'Human resources', description: 'This department deals with employees inside the organization' }];
+  selectedDepartment: Department;
 
   ngOnInit(): void {
   }
@@ -22,5 +27,13 @@ export class DepartmentListComponent implements OnInit {
     this.departments.splice(index, 1);
   }
 
+  addDepartment() {
+    this.departments.push(new Department(this.newID, this.newDepartmentName, this.newDepartmentDescription));
+  }
+
+  selectDepartment(department) {
+    this.selectedDepartment = department;
+
+  }
 
 }
