@@ -1,6 +1,15 @@
 <div>
-    <h2> Departments</h2>
-    <ol>
-      <li *ngFor="let department of departments">{{ department }}</li>
-    </ol>
-  </div>
+  <h2>Departments</h2>
+  <h3>Create Department</h3>
+  <input type="text" />
+  <h3>List Departments</h3>
+  <ul>
+    <li *ngFor="let department of departments">
+      {{ department.id }} {{ department.depnName }}
+      <p>{{ department.description }}</p>
+      <span
+        ><button (click)="deleteDepartment(department)">Delete</button></span
+      >
+    </li>
+  </ul>
+</div>

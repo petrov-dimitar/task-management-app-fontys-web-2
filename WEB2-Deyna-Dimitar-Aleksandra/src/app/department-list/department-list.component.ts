@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Department } from '../interfaces/department';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-department-list',
@@ -9,9 +11,16 @@ export class DepartmentListComponent implements OnInit {
 
   constructor() { }
 
-  departments: string[] = ['Finance', 'IT', 'HR'];
+  departments: Department[] = [{ id: '1', depName: 'Human resources', description: 'This department deals with employees inside the organization' }];
 
   ngOnInit(): void {
   }
+
+
+  deleteDepartment(task: Department) {
+    let index = this.departments.indexOf(task);
+    this.departments.splice(index, 1);
+  }
+
 
 }
