@@ -1,6 +1,30 @@
 <div>
   <h2>Tasks</h2>
+  <h3> Create Task</h3>
+
+  <input type="text" placeholder="Task id" [(ngModel)]="newId" />
+  <input type="text" placeholder="Task name" [(ngModel)]="newTask"/>
+  <input type="text" placeholder="Task Description" [(ngModel)]="newTaskDescription"/>
+  <button (click)="addTask()">Create Task</button>
+
+  <select name="" id="">
+    <option *ngFor="let task of tasks"></option>
+  </select>
+  <h3>List Tasks</h3>
   <ul>
-    <li *ngFor="let task of tasks">{{task.id}} {{task.name}}</li>
+    <li (click)="selectTask(task)" *ngFor="let task of tasks">
+      {{ task.taskId }} {{ task.taskName }}
+      <p>{{ task.description }}</p>
+      <span><button (click)="deleteTask(task)">Delete</button></span>
+    </li>
   </ul>
+  <h3>Edit Tasks</h3>
+  <input
+    *ngIf="selectedTask"
+    type="text"
+    [(ngModel)]="selectedTask.taskName"
+  />
+  <!-- <ul>
+    <li *ngFor="let task of tasks">{{task.id}} {{task.name}}</li>
+  </ul> -->
 </div>

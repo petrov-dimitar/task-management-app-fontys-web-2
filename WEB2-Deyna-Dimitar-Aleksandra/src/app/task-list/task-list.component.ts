@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TASKS, Task} from '../interfaces/task';
+import { Task} from '../interfaces/task';
 
 @Component({
   selector: 'app-task-list',
@@ -9,10 +9,26 @@ import { TASKS, Task} from '../interfaces/task';
 export class TaskListComponent implements OnInit {
 
   constructor() { }
-
-  tasks:Task[] = TASKS;
+  newId: string;
+  newTask: string;
+  newTaskDescription: string;
+  newDeadlineDate: Date;
+  tasks: Task[] = [{taskId: '1', taskName: 'Send mail', description: 'A mail should be send to the director.'}];
+  selectedTask: Task;
 
   ngOnInit() {
   }
 
+  deleteTask(task: Task) {
+    let index = this.tasks.indexOf(task);
+    this.tasks.splice(index, 1);
+  }
+
+  addTask() {
+    this.tasks.push(new Task(this.newId, this.newTask, this.newTaskDescription, this.newDeadlineDate));
+  }
+
+  selectTask(task) {
+   this.selectedTask = task;
+  }
 }
