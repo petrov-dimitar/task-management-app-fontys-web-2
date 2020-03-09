@@ -1,7 +1,45 @@
-<p>employee-list works!</p>
+<!-- <p>employee-list works!</p> -->
 <div>
     <h2> Employees</h2>
     <ol>
-      <li *ngFor="let employee of employees">{{ employee }}</li>
+      <!-- <li *ngFor="let employee of employees">{{ employee }}</li> -->
     </ol>
+
+
+    <input type="text" placeholder="Employee ID" [(ngModel)]="newId" />
+    <input type="text" placeholder="Employee Name" [(ngModel)]="newName"/>
+    <input type="text"placeholder="Age" [(ngModel)]="newAge"/>
+    <!-- <input type="text" placeholder="Department ID" [(ngModel)]="departmentId"/> -->
+    <input type="text" placeholder="City" [(ngModel)]="newCity"/>
+
+    <button (click)="addEmployee()">Create Employee</button>
+
+    <select name="" id="">
+      <option *ngFor="let employee of employees"></option>
+    </select>
+    <h3>List Employees</h3>
+    <ul>
+      <li
+        (click)="selectEmployee(employee)"
+        *ngFor="let employee of employees"
+      >
+        {{ employee.id }} {{ employee.name }} {{ employee.city }}
+        <span
+          ><button (click)="deleteEmployee(employee)">Delete</button></span
+        >
+      </li>
+    </ul>
+    <h3>Edit Employee</h3>
+    <input
+      *ngIf="selectedEmployee"
+      type="text"
+      [(ngModel)]="selectedEmployee.id"
+    />
+    
+    <input
+      *ngIf="selectedEmployee"
+      type="text"
+      [(ngModel)]="selectedEmployee.name"
+    />
+
   </div>
