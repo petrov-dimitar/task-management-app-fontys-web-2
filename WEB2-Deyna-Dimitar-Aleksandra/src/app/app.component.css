@@ -1,0 +1,9 @@
+mat-drawer-content {
+  height: 100vh;
+}
+
+mat-nav-list {
+  display: block;
+  margin: 20px;
+
+}
