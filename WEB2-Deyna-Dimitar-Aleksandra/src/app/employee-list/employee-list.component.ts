@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import {Employee} from '../interfaces/employee'
 import { TaskService } from '../services/task.service';
 import { Task } from '../interfaces/task';
+import { EmployeeService } from '../services/employee.service';
 
 @Component({
   selector: 'app-employee-list',
@@ -10,23 +11,27 @@ import { Task } from '../interfaces/task';
 })
 export class EmployeeListComponent implements OnInit {
 
-  constructor(private taskService: TaskService) { 
+  constructor(private taskService: TaskService, private employeeService: EmployeeService) { 
   }
   newId: string;
   newName: string;
   newAge: number;
   newCity: string;
   departmentId: number;
-  employees: Employee[] = [{id: 'TestId', name: 'Test Employee', age: 21, city: 'Test City', departmentId: '1'}];
+  employees: Employee[];
   selectedEmployee: Employee;
   tasks: Task[];
 
   // employees: string[] = ['Ivan', 'Jonh', 'Laura', 'Ricardo',] 
   ngOnInit(): void {
   this.getTasks();
+  this.getEmployee();
   }
   getTasks(): void{
     this.taskService.getTasks().subscribe(tasks => this.tasks = tasks);
+   }
+   getEmployee(): void{
+     this.employeeService.getEmployee().subscribe(employees => this.employees = employees); //return employyes - assign the "new" employee to the employee
    }
   deleteEmployee(employee: Employee){
     let index = this.employees.indexOf(employee);
