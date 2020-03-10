@@ -12,10 +12,11 @@
     <!-- <input type="text" placeholder="Department ID" [(ngModel)]="departmentId"/> -->
     <input type="text" placeholder="City" [(ngModel)]="newCity"/>
 
+
     <button (click)="addEmployee()">Create Employee</button>
 
     <select name="" id="">
-      <option *ngFor="let employee of employees"></option>
+      <option *ngFor="let task of tasks">{{task.taskName}}</option>
     </select>
     <h3>List Employees</h3>
     <ul>
