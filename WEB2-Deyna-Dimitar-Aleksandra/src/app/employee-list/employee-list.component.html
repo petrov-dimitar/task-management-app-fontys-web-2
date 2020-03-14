@@ -13,13 +13,10 @@
 
   <button (click)="addEmployee()">Create Employee</button>
 
+  <button (click)="addEmployee()">Create Employee</button>
+
   <select name="" id="">
-    <option *ngFor="let employee of employees"></option>
-  </select>
-  <select name="" id="">
-    <option *ngFor="let department of departmentsToChoose">{{
-      department.depName
-    }}</option>
+    <option *ngFor="let task of tasks">{{ task.taskName }}</option>
   </select>
   <h3>List Employees</h3>
   <ul>

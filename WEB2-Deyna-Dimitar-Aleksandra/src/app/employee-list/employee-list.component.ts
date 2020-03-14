@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../interfaces/employee'
+import { TaskService } from '../services/task.service';
+import { Task } from '../interfaces/task';
+import { EmployeeService } from '../services/employee.service';
 import { DepartmentsService } from '../services/departments.service';
 import { Department } from '../interfaces/department';
 
@@ -10,21 +13,34 @@ import { Department } from '../interfaces/department';
 })
 export class EmployeeListComponent implements OnInit {
 
-  constructor(private departmentService: DepartmentsService) {
+  constructor(private taskService: TaskService, private employeeService: EmployeeService, private departmentService: DepartmentsService) {
   }
   newId: string;
   newName: string;
   newAge: number;
   newCity: string;
   departmentId: number;
-  employees: Employee[] = [{ id: 'TestId', name: 'Test Employee', age: 21, city: 'Test City', departmentId: '1' }];
+  employees: Employee[];
   selectedEmployee: Employee;
+  tasks: Task[];
   departmentsToChoose: Department[];
   // employees: string[] = ['Ivan', 'Jonh', 'Laura', 'Ricardo',] 
-  ngOnInit(): void {
-    this.getDepartments();
-  }
 
+
+
+  // employees: string[] = ['Ivan', 'Jonh', 'Laura', 'Ricardo',]
+  ngOnInit(): void {
+    this.getTasks();
+    this.getEmployee();
+    this.getDepartments();
+
+  }
+  getTasks(): void {
+    this.taskService.getTasks().subscribe(tasks => this.tasks = tasks);
+  }
+  getEmployee(): void {
+    this.employeeService.getEmployee().subscribe(employees => this.employees = employees); //return employyes - assign the "new" employee to the employee
+  }
   deleteEmployee(employee: Employee) {
     let index = this.employees.indexOf(employee);
     this.employees.splice(index, 1);
