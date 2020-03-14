@@ -1,9 +1,23 @@
 mat-drawer-content {
   height: 100vh;
+
 }
 
 mat-nav-list {
   display: block;
   margin: 20px;
 
+}
+
+.drawer-left {
+  background: rgba(54, 54, 69, 1);
+
+}
+
+.drawer-left a {
+  color: white;
+}
+
+.mat-toolbar-nav {
+  background: white !important;
 }

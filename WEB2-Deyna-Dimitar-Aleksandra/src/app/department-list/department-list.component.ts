@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Department } from '../interfaces/department';
 import { Task } from '../interfaces/task';
+import { DepartmentsService } from '../services/departments.service'
 
 
 @Component({
@@ -10,15 +11,20 @@ import { Task } from '../interfaces/task';
 })
 export class DepartmentListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private departmentService: DepartmentsService) {
+
+  }
   newID: string;
   newDepartmentName: string;
   newDepartmentDescription: string;
   tasks: Task[];
-  departments: Department[] = [{ id: '1', depName: 'Human resources', description: 'This department deals with employees inside the organization' }];
+  departments: Department[];
   selectedDepartment: Department;
 
   ngOnInit(): void {
+    this.getDepartments()
+
+
   }
 
 
@@ -34,6 +40,11 @@ export class DepartmentListComponent implements OnInit {
   selectDepartment(department) {
     this.selectedDepartment = department;
 
+  }
+
+  getDepartments(): void {
+    this.departmentService.getDepartments()
+      .subscribe(departments => this.departments = departments);
   }
 
 }

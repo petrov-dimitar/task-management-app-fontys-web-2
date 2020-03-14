@@ -1,5 +1,7 @@
-import { Component, OnInit} from '@angular/core';
-import {Employee} from '../interfaces/employee'
+import { Component, OnInit } from '@angular/core';
+import { Employee } from '../interfaces/employee'
+import { DepartmentsService } from '../services/departments.service';
+import { Department } from '../interfaces/department';
 
 @Component({
   selector: 'app-employee-list',
@@ -8,27 +10,27 @@ import {Employee} from '../interfaces/employee'
 })
 export class EmployeeListComponent implements OnInit {
 
-  constructor() { 
+  constructor(private departmentService: DepartmentsService) {
   }
   newId: string;
   newName: string;
   newAge: number;
   newCity: string;
   departmentId: number;
-  employees: Employee[] = [{id: 'TestId', name: 'Test Employee', age: 21, city: 'Test City', departmentId: '1'}];
+  employees: Employee[] = [{ id: 'TestId', name: 'Test Employee', age: 21, city: 'Test City', departmentId: '1' }];
   selectedEmployee: Employee;
-
+  departmentsToChoose: Department[];
   // employees: string[] = ['Ivan', 'Jonh', 'Laura', 'Ricardo',] 
   ngOnInit(): void {
-
+    this.getDepartments();
   }
 
-  deleteEmployee(employee: Employee){
+  deleteEmployee(employee: Employee) {
     let index = this.employees.indexOf(employee);
     this.employees.splice(index, 1);
   }
 
-  addEmployee(){
+  addEmployee() {
     this.employees.push(new Employee(this.newId, this.newName, this.newCity, this.newAge))
   }
 
@@ -36,4 +38,8 @@ export class EmployeeListComponent implements OnInit {
     this.selectedEmployee = employee;
   }
 
+  getDepartments(): void {
+    this.departmentService.getDepartments()
+      .subscribe(departments => this.departmentsToChoose = departments);
+  }
 }
