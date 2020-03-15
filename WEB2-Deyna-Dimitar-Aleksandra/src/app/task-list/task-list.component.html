@@ -2,23 +2,54 @@
   <h2>Tasks</h2>
   <h3>Create Task</h3>
 
-  <input type="text" placeholder="Task id" [(ngModel)]="newId" />
-  <input type="text" placeholder="Task name" [(ngModel)]="newTask" />
-  <input
-    type="text"
-    placeholder="Task Description"
-    [(ngModel)]="newTaskDescription"
-  />
-  <button (click)="addTask()">Create Task</button>
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Task ID</mat-label>
+    <input matInput type="text" placeholder="Task id" [(ngModel)]="newId" />
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Task Name</mat-label>
+    <input matInput type="text" placeholder="Task name" [(ngModel)]="newTask" />
+  </mat-form-field>
 
-  <select name="" id="">
-    <option *ngFor="let task of tasks"></option>
-  </select>
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Description</mat-label>
+    <textarea
+      matInput
+      type="text"
+      placeholder="Task Description"
+      [(ngModel)]="newTaskDescription"
+    >
+    </textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Due date</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDueDate" />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Assign Employee</mat-label>
+    <mat-select name="" id="" [(ngModel)]="selectedEmployee">
+      <mat-option [value]="employee.name" *ngFor="let employee of employees">{{
+        employee.name
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br />
+  <button mat-raised-button color="alert" (click)="addTask()">
+    Create Task
+  </button>
+
   <h3>List Tasks</h3>
   <ul>
     <li (click)="selectTask(task)" *ngFor="let task of tasks">
-      {{ task.taskId }} {{ task.name }}
-      <p>{{ task.description }}</p>
+      <p>ID: {{ task.id }}</p>
+      <p>Task Name: {{ task.name }}</p>
+      <p>Description: {{ task.description }}</p>
+      <p>Due Date: {{ task.deadlineDate }}</p>
+      <p>Employees Assigned:{{ task.assignedEmployee }}</p>
       <span><button (click)="deleteTask(task)">Delete</button></span>
     </li>
   </ul>

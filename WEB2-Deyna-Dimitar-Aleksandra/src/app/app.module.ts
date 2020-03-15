@@ -13,6 +13,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +38,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MatListModule,
     MatIconModule,
     AppRoutingModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

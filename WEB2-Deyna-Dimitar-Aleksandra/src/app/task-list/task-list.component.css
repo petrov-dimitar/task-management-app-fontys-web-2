@@ -5,3 +5,8 @@ input {
 .wrapper {
   padding: 15px;
 }
+
+mat-form-field {
+  display: block;
+  width: 50%;
+}

@@ -1,14 +1,18 @@
+import { Employee } from './employee';
+
 export class Task {
     id: string;
     name: string;
     description: string;
     deadlineDate?: Date;
+    assignedEmployee?: Employee;
 
-    constructor(id: string, taskName: string, description: string, deadlineDate: Date) {
+    constructor(id: string, taskName: string, description: string, deadlineDate: Date, assignedEmployee?: Employee) {
         this.id = id;
         this.name = taskName;
         this.description = description;
         this.deadlineDate = deadlineDate;
+        this.assignedEmployee = assignedEmployee;
 
     }
 }
