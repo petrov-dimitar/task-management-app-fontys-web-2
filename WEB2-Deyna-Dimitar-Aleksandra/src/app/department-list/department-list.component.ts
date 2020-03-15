@@ -21,7 +21,7 @@ export class DepartmentListComponent implements OnInit {
   departments: Department[];
   selectedDepartment: Department;
   employees: Employee[];
-
+  selectedEmployees: Employee[];
   ngOnInit(): void {
     this.getDepartments()
 
@@ -38,7 +38,8 @@ export class DepartmentListComponent implements OnInit {
   }
 
   addDepartment() {
-    this.departments.push(new Department(this.newID, this.newDepartmentName, this.newDepartmentDescription));
+    this.departments.push(new Department(this.newID, this.newDepartmentName, this.newDepartmentDescription, [], this.selectedEmployees));
+    console.log(this.selectedEmployees);
   }
 
   selectDepartment(department) {
