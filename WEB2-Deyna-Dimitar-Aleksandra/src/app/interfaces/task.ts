@@ -1,4 +1,5 @@
 import { Employee } from './employee';
+import { Department } from './department';
 
 export class Task {
     id: string;
@@ -6,14 +7,15 @@ export class Task {
     description: string;
     deadlineDate?: Date;
     assignedEmployee?: Employee;
+    assignedDepartment?: Department;
 
-    constructor(id: string, taskName: string, description: string, deadlineDate: Date, assignedEmployee?: Employee) {
+    constructor(id: string, taskName: string, description: string, deadlineDate: Date, assignedEmployee?: Employee, assignedDepartment?: Department) {
         this.id = id;
         this.name = taskName;
         this.description = description;
         this.deadlineDate = deadlineDate;
         this.assignedEmployee = assignedEmployee;
-
+        this.assignedDepartment = assignedDepartment;
     }
 }
 /*

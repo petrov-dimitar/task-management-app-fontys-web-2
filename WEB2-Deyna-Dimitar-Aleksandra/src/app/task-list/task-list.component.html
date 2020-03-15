@@ -37,6 +37,16 @@
       }}</mat-option>
     </mat-select>
   </mat-form-field>
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Assign Department</mat-label>
+    <mat-select name="" id="" [(ngModel)]="selectedDepartment">
+      <mat-option
+        [value]="department.name"
+        *ngFor="let department of departments"
+        >{{ department.name }}</mat-option
+      >
+    </mat-select>
+  </mat-form-field>
   <br />
   <button mat-raised-button color="alert" (click)="addTask()">
     Create Task
@@ -49,7 +59,8 @@
       <p>Task Name: {{ task.name }}</p>
       <p>Description: {{ task.description }}</p>
       <p>Due Date: {{ task.deadlineDate }}</p>
-      <p>Employees Assigned:{{ task.assignedEmployee }}</p>
+      <p>Employee Assigned:{{ task.assignedEmployee }}</p>
+      <p>Department Assigned:{{ task.assignedDepartment }}</p>
       <span><button (click)="deleteTask(task)">Delete</button></span>
     </li>
   </ul>
