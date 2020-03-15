@@ -1,15 +1,15 @@
-export class Employee{
-    constructor(id, name, age?, city?, departmentId?){
+export class Employee {
+    constructor(id, name, age?, city?, department?) {
         this.id = id
         this.name = name
         this.age = age
         this.city = city
-        this.departmentId = departmentId
+        this.department = department
     }
 
     id: string
     name: string
     age?: number
     city?: string
-    departmentId?: string
+    department?: string
 }

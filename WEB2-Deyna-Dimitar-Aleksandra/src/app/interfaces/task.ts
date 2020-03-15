@@ -1,15 +1,21 @@
+import { Employee } from './employee';
+import { Department } from './department';
+
 export class Task {
-    taskId: string;
-    taskName: string;
+    id: string;
+    name: string;
     description: string;
     deadlineDate?: Date;
+    assignedEmployee?: Employee;
+    assignedDepartment?: Department;
 
-    constructor(id:string, taskName:string, description:string, deadlineDate:Date){
-        this.taskId = id;
-        this.taskName = taskName;
+    constructor(id: string, taskName: string, description: string, deadlineDate: Date, assignedEmployee?: Employee, assignedDepartment?: Department) {
+        this.id = id;
+        this.name = taskName;
         this.description = description;
         this.deadlineDate = deadlineDate;
-
+        this.assignedEmployee = assignedEmployee;
+        this.assignedDepartment = assignedDepartment;
     }
 }
 /*

@@ -1,4 +1,4 @@
-<div>
+<div class="wrapper">
   <h2>Departments</h2>
   <h3>Create Department</h3>
 
@@ -13,19 +13,32 @@
     placeholder="Description"
     [(ngModel)]="newDepartmentDescription"
   />
+
+  <mat-form-field>
+    <mat-label>Assign Employees</mat-label>
+    <mat-select multiple [(ngModel)]="selectedEmployees">
+      <mat-option *ngFor="let employee of employees" [value]="employee">{{
+        employee.name
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
   <button (click)="addDepartment()">Create Department</button>
 
   <select name="" id="">
     <option *ngFor="let task of tasks"></option>
   </select>
+
   <h3>List Departments</h3>
   <ul>
     <li
       (click)="selectDepartment(department)"
       *ngFor="let department of departments"
     >
-      {{ department.id }} {{ department.depName }}
+      {{ department.id }} {{ department.name }}
       <p>{{ department.description }}</p>
+      <p *ngFor="let emp of department.employees">
+        Assigned Employee: {{ emp.name }}
+      </p>
       <span
         ><button (click)="deleteDepartment(department)">Delete</button></span
       >
@@ -35,6 +48,6 @@
   <input
     *ngIf="selectedDepartment"
     type="text"
-    [(ngModel)]="selectedDepartment.depName"
+    [(ngModel)]="selectedDepartment.name"
   />
 </div>

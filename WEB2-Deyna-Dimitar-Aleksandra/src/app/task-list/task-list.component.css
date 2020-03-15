@@ -1,4 +1,12 @@
 input {
-    display: block;
-  }
-  
+  display: block;
+}
+
+.wrapper {
+  padding: 15px;
+}
+
+mat-form-field {
+  display: block;
+  width: 50%;
+}

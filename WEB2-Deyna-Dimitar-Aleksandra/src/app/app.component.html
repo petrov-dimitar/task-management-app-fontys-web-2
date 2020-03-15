@@ -1,3 +1,34 @@
-<app-task-list></app-task-list>
-<app-department-list></app-department-list>
-<app-employee-list></app-employee-list>
+<mat-drawer-container class="example-container">
+  <mat-drawer class="drawer-left" mode="side" opened>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/dashboard" style="height: 0;"
+        ><mat-icon matListIcon> Home </mat-icon> Dashboard</a
+      >
+    </mat-nav-list>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/task-list-component" style="height: 0;"
+        ><mat-icon matListIcon> Home </mat-icon> Tasks</a
+      >
+    </mat-nav-list>
+    <mat-nav-list>
+      <a
+        mat-list-item
+        routerLink="/department-list-component"
+        style="height: 0;"
+        ><mat-icon matListIcon> Home </mat-icon> Departments</a
+      >
+    </mat-nav-list>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/employee-list-component" style="height: 0;"
+        ><mat-icon matListIcon> Home </mat-icon> Employees</a
+      >
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <mat-toolbar class="mat-elevation-z2 mat-toolbar-nav">My App</mat-toolbar>
+    <!-- <app-task-list></app-task-list>
+    <app-department-list></app-department-list>
+    <app-employee-list></app-employee-list> -->
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
