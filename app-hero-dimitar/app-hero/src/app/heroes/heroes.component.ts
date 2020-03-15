@@ -2,26 +2,34 @@ import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { HEROES } from '../mock-heroes';
+import { HeroService } from '../services/hero.service';
+import { inject } from '@angular/core/testing';
+import { MessageService } from '../services/message.service';
 @Component({
   selector: 'app-heroes',
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.scss']
 })
+
 export class HeroesComponent implements OnInit {
-  hero: Hero = {
-    id: 1,
-    name: 'Windstorm'
-  };
-  heroes = HEROES
-  constructor() { }
+
+  selectedHero: Hero;
+
+  heroes: Hero[];
+
+  constructor(private heroService: HeroService, private messageService: MessageService) { }
 
   ngOnInit() {
-    this.selectedHero.name = 'Default'
-    this.selectedHero.id = 0
+    this.getHeroes();
   }
-  selectedHero: Hero
 
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
+    this.messageService.add(`HeroService: Selected hero id=${hero.id}`);
+  }
+
+  getHeroes(): void {
+    this.heroService.getHeroes()
+      .subscribe(heroes => this.heroes = heroes);
   }
 }
