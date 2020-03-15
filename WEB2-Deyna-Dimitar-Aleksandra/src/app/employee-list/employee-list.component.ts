@@ -24,6 +24,7 @@ export class EmployeeListComponent implements OnInit {
   selectedEmployee: Employee;
   tasks: Task[];
   departmentsToChoose: Department[];
+  selectedDepartment: Department;
   // employees: string[] = ['Ivan', 'Jonh', 'Laura', 'Ricardo',] 
 
 
@@ -47,7 +48,7 @@ export class EmployeeListComponent implements OnInit {
   }
 
   addEmployee() {
-    this.employees.push(new Employee(this.newId, this.newName, this.newCity, this.newAge))
+    this.employees.push(new Employee(this.newId, this.newName, this.newCity, this.newAge, this.selectedDepartment))
   }
 
   selectEmployee(employee) {

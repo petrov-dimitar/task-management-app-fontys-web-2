@@ -9,9 +9,9 @@ export class EmployeeService {
 
   constructor() { }
 
-  employees: Employee[] = [{id: 'TestId', name: 'Test Employee', age: 21, city: 'Test City', departmentId: '1'}];
+  employees: Employee[] = [{ id: 'TestId', name: 'Test Employee', age: 21, city: 'Test City', department: 'HR' }];
 
-  getEmployee(): Observable<Employee[]>{
-  return of(this.employees);
+  getEmployee(): Observable<Employee[]> {
+    return of(this.employees);
   }
 }

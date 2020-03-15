@@ -7,11 +7,12 @@
 
 <h2>Employees</h2>
 <ul>
-  <li *ngFor="let employee of employees">
-    <span>{{ employee.id }} {{ employee.name }}</span>
+  <li (click)="selectEmployee(employee)" *ngFor="let employee of employees">
+    {{ employee.id }} {{ employee.name }} {{ employee.city }}
+    {{ employee.department }}
+    <span><button (click)="deleteEmployee(employee)">Delete</button></span>
   </li>
 </ul>
-
 <h2>Departments</h2>
 <ul>
   <li *ngFor="let department of departments">
