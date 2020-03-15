@@ -1,12 +1,12 @@
 export class Task {
-    taskId: string;
-    taskName: string;
+    id: string;
+    name: string;
     description: string;
     deadlineDate?: Date;
 
-    constructor(id:string, taskName:string, description:string, deadlineDate:Date){
-        this.taskId = id;
-        this.taskName = taskName;
+    constructor(id: string, taskName: string, description: string, deadlineDate: Date) {
+        this.id = id;
+        this.name = taskName;
         this.description = description;
         this.deadlineDate = deadlineDate;
 

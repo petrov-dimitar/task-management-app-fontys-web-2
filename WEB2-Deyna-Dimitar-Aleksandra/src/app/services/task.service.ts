@@ -9,11 +9,11 @@ export class TaskService {
   constructor() { }
 
   tasks: Task[] = [
-    {taskId: '1', taskName: 'Send mail', description: 'A mail should be send to the director.'},
-    {taskId: '2', taskName: 'Make a report', description: 'A report needs to be made.'} 
-];
+    { id: '1', name: 'Send mail', description: 'A mail should be send to the director.' },
+    { id: '2', name: 'Make a report', description: 'A report needs to be made.' }
+  ];
 
-  getTasks(): Observable<Task[]>{
-  return of(this.tasks);
-}
+  getTasks(): Observable<Task[]> {
+    return of(this.tasks);
+  }
 }

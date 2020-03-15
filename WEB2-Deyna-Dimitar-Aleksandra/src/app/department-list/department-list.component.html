@@ -19,7 +19,7 @@
     <option *ngFor="let task of tasks"></option>
   </select>
   <select name="" id="">
-    <option *ngFor="let employee of employees">{{employee.name}}</option>
+    <option *ngFor="let employee of employees">{{ employee.name }}</option>
   </select>
   <h3>List Departments</h3>
   <ul>
@@ -27,7 +27,7 @@
       (click)="selectDepartment(department)"
       *ngFor="let department of departments"
     >
-      {{ department.id }} {{ department.depName }}
+      {{ department.id }} {{ department.name }}
       <p>{{ department.description }}</p>
       <span
         ><button (click)="deleteDepartment(department)">Delete</button></span
@@ -38,6 +38,6 @@
   <input
     *ngIf="selectedDepartment"
     type="text"
-    [(ngModel)]="selectedDepartment.depName"
+    [(ngModel)]="selectedDepartment.name"
   />
 </div>

@@ -7,9 +7,9 @@ import { Observable, of } from 'rxjs';
 export class DepartmentsService {
   departments: Department[] =
     [
-      { id: '1', depName: 'Human resources', description: 'This department deals with employees inside the organization' },
-      { id: '2', depName: 'Marketing', description: 'This department deals with marketing' },
-      { id: '3', depName: 'Sales', description: 'This department deals Sales' }
+      { id: '1', name: 'Human resources', description: 'This department deals with employees inside the organization' },
+      { id: '2', name: 'Marketing', description: 'This department deals with marketing' },
+      { id: '3', name: 'Sales', description: 'This department deals Sales' }
     ];
   constructor() { }
 
