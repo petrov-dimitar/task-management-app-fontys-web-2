@@ -7,6 +7,7 @@ import { HeroesComponent } from './heroes/heroes.component';
 import { MockHeroesComponent } from './mock-heroes/mock-heroes.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { MessagesComponent } from './messages/messages.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { MessagesComponent } from './messages/messages.component';
     HeroesComponent,
     MockHeroesComponent,
     HeroDetailComponent,
-    MessagesComponent
+    MessagesComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
