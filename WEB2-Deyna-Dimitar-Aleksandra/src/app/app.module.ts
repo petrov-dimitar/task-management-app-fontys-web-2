@@ -22,6 +22,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { AddTaskDialogComponent } from './task/add-task-dialog/add-task-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AddDepartmentDialogComponent } from './department/add-department-dialog/add-department-dialog.component';
+import { AddEmployeeDialogComponent } from './employee/add-employee-dialog/add-employee-dialog.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AddDepartmentDialogComponent } from './department/add-department-dialog
     EmployeeListComponent,
     DashboardComponent,
     AddTaskDialogComponent,
-    AddDepartmentDialogComponent
+    AddDepartmentDialogComponent,
+    AddEmployeeDialogComponent
   ],
   imports: [
     BrowserModule,
