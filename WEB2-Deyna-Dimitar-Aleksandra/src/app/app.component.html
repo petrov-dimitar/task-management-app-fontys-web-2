@@ -25,7 +25,29 @@
     </mat-nav-list>
   </mat-drawer>
   <mat-drawer-content>
-    <mat-toolbar class="mat-elevation-z2 mat-toolbar-nav">My App</mat-toolbar>
+    <mat-toolbar class="mat-elevation-z2 mat-toolbar-nav">
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <input
+            type="text"
+            placeholder="Pick one"
+            aria-label="Number"
+            matInput
+            [formControl]="myControl"
+            [matAutocomplete]="auto"
+          />
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option
+              *ngFor="let option of filteredOptions | async"
+              [value]="option.name"
+            >
+              {{ option.id }} {{ option.name }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+    </mat-toolbar>
+
     <!-- <app-task-list></app-task-list>
     <app-department-list></app-department-list>
     <app-employee-list></app-employee-list> -->

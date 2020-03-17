@@ -5,6 +5,7 @@ import { Employee } from '../../interfaces/employee';
 import { EmployeeService } from '../../services/employee.service';
 import { DepartmentsService } from '../../services/departments.service';
 import { Department } from '../../interfaces/department';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-task-list',
@@ -25,6 +26,8 @@ export class TaskListComponent implements OnInit {
   selectedEmployee: Employee;
   departments: Department[];
   selectedDepartment: Department;
+
+
   ngOnInit() {
     this.getTasks();
     this.getEmployees();
@@ -52,4 +55,6 @@ export class TaskListComponent implements OnInit {
   selectTask(task) {
     this.selectedTask = task;
   }
+
+
 }
