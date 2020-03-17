@@ -8,13 +8,20 @@ import { Department } from '../../interfaces/department';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTaskDialogComponent } from '../add-task-dialog/add-task-dialog.component';
+import { ViewChild } from '@angular/core';
+import { MatTable } from '@angular/material/table';
 
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.css']
+
 })
+
 export class TaskListComponent implements OnInit {
+
+  displayedColumns: string[] = ['id', 'name', 'deadlineDate', 'assignedEmployee', 'assignedDepartment', 'description'];
+
 
   constructor(public taskService: TaskService, private employeeService: EmployeeService, private departmentService: DepartmentsService, public dialog: MatDialog) { }
   newId: string;
@@ -28,6 +35,7 @@ export class TaskListComponent implements OnInit {
   selectedEmployee: Employee;
   departments: Department[];
   selectedDepartment: Department;
+
 
 
   ngOnInit() {
@@ -49,7 +57,7 @@ export class TaskListComponent implements OnInit {
     let index = this.tasks.indexOf(task);
     this.tasks.splice(index, 1);
   }
-
+  @ViewChild(MatTable) table: MatTable<any>;
   addTask() {
     this.tasks.push(new Task(this.newId, this.newTask, this.newTaskDescription, this.selectedDueDate, this.selectedEmployee, this.selectedDepartment));
   }
@@ -60,14 +68,16 @@ export class TaskListComponent implements OnInit {
 
 
   openDialog(): void {
+
     const dialogRef = this.dialog.open(AddTaskDialogComponent, {
       width: '60vw',
       data: { name: 'testData' }
+
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-
+      this.table.renderRows();
     });
   }
 

@@ -23,7 +23,7 @@ import { AddTaskDialogComponent } from './task/add-task-dialog/add-task-dialog.c
 import { MatDialogModule } from '@angular/material/dialog';
 import { AddDepartmentDialogComponent } from './department/add-department-dialog/add-department-dialog.component';
 import { AddEmployeeDialogComponent } from './employee/add-employee-dialog/add-employee-dialog.component';
-
+import { MatTableModule } from '@angular/material/table';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +52,8 @@ import { AddEmployeeDialogComponent } from './employee/add-employee-dialog/add-e
     MatNativeDateModule,
     MatAutocompleteModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule
 
   ],
   providers: [],

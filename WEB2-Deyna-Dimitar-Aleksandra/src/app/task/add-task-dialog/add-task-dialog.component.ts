@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { TaskService } from 'src/app/services/task.service';
 import { EmployeeService } from 'src/app/services/employee.service';
@@ -6,6 +6,7 @@ import { DepartmentsService } from 'src/app/services/departments.service';
 import { Task } from 'src/app/interfaces/task';
 import { Employee } from 'src/app/interfaces/employee';
 import { Department } from 'src/app/interfaces/department';
+import { MatTable } from '@angular/material/table';
 
 @Component({
   selector: 'app-add-task-dialog',
@@ -35,7 +36,7 @@ export class AddTaskDialogComponent implements OnInit {
   selectedEmployee: Employee;
   departments: Department[];
   selectedDepartment: Department;
-
+  @ViewChild(MatTable) table: MatTable<any>;
 
   ngOnInit() {
     this.getTasks();
@@ -59,6 +60,7 @@ export class AddTaskDialogComponent implements OnInit {
 
   addTask() {
     this.tasks.push(new Task(this.newId, this.newTask, this.newTaskDescription, this.selectedDueDate, this.selectedEmployee, this.selectedDepartment));
+    this.dialog.closeAll();
   }
 
   selectTask(task) {
