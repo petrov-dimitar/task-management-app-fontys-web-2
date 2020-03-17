@@ -19,7 +19,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-
+import { AddTaskDialogComponent } from './task/add-task-dialog/add-task-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     TaskListComponent,
     DepartmentListComponent,
     EmployeeListComponent,
-    DashboardComponent
+    DashboardComponent,
+    AddTaskDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatDatepickerModule,
     MatNativeDateModule,
     MatAutocompleteModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule
 
   ],
   providers: [],

@@ -24,4 +24,14 @@ mat-nav-list {
 
 .search-box {
   width: 20vw;
+
+}
+
+.search-box mat-icon {
+  position: relative;
+  right: 30px;
+}
+
+.mat-form-field-infix {
+  padding: 0px !important;
 }

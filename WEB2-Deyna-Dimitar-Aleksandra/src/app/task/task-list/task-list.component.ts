@@ -6,6 +6,8 @@ import { EmployeeService } from '../../services/employee.service';
 import { DepartmentsService } from '../../services/departments.service';
 import { Department } from '../../interfaces/department';
 import { FormControl } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { AddTaskDialogComponent } from '../add-task-dialog/add-task-dialog.component';
 
 @Component({
   selector: 'app-task-list',
@@ -14,7 +16,7 @@ import { FormControl } from '@angular/forms';
 })
 export class TaskListComponent implements OnInit {
 
-  constructor(public taskService: TaskService, private employeeService: EmployeeService, private departmentService: DepartmentsService) { }
+  constructor(public taskService: TaskService, private employeeService: EmployeeService, private departmentService: DepartmentsService, public dialog: MatDialog) { }
   newId: string;
   newTask: string;
   newTaskDescription: string;
@@ -54,6 +56,19 @@ export class TaskListComponent implements OnInit {
 
   selectTask(task) {
     this.selectedTask = task;
+  }
+
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AddTaskDialogComponent, {
+      width: '60vw',
+      data: { name: 'testData' }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+
+    });
   }
 
 
