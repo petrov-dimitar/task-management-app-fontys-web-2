@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Department } from '../interfaces/department';
-import { Task } from '../interfaces/task';
-import { DepartmentsService } from '../services/departments.service'
-import { Employee } from '../interfaces/employee';
-import { EmployeeService } from '../services/employee.service';
+import { Department } from '../../interfaces/department';
+import { Task } from '../../interfaces/task';
+import { DepartmentsService } from '../../services/departments.service'
+import { Employee } from '../../interfaces/employee';
+import { EmployeeService } from '../../services/employee.service';
 
 
 @Component({

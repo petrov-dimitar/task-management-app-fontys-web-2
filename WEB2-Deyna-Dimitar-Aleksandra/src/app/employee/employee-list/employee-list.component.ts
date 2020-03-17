@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Employee } from '../interfaces/employee'
-import { TaskService } from '../services/task.service';
-import { Task } from '../interfaces/task';
-import { EmployeeService } from '../services/employee.service';
-import { DepartmentsService } from '../services/departments.service';
-import { Department } from '../interfaces/department';
+import { Employee } from '../../interfaces/employee'
+import { TaskService } from '../../services/task.service';
+import { Task } from '../../interfaces/task';
+import { EmployeeService } from '../../services/employee.service';
+import { DepartmentsService } from '../../services/departments.service';
+import { Department } from '../../interfaces/department';
 
 @Component({
   selector: 'app-employee-list',

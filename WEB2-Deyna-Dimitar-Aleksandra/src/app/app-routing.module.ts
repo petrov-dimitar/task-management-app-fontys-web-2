@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TaskListComponent } from './task-list/task-list.component';
-import { EmployeeListComponent } from './employee-list/employee-list.component';
-import { DepartmentListComponent } from './department-list/department-list.component';
+import { TaskListComponent } from './task/task-list/task-list.component';
+import { EmployeeListComponent } from './employee/employee-list/employee-list.component';
+import { DepartmentListComponent } from './department/department-list/department-list.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
