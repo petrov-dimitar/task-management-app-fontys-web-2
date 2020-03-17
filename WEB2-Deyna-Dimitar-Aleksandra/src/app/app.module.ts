@@ -21,6 +21,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { AddTaskDialogComponent } from './task/add-task-dialog/add-task-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { AddDepartmentDialogComponent } from './department/add-department-dialog/add-department-dialog.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     DepartmentListComponent,
     EmployeeListComponent,
     DashboardComponent,
-    AddTaskDialogComponent
+    AddTaskDialogComponent,
+    AddDepartmentDialogComponent
   ],
   imports: [
     BrowserModule,
