@@ -21,3 +21,7 @@ mat-nav-list {
 .mat-toolbar-nav {
   background: white !important;
 }
+
+.search-box {
+  width: 20vw;
+}
