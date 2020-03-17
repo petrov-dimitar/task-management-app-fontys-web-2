@@ -5,8 +5,12 @@ mat-drawer-content {
 
 mat-nav-list {
   display: block;
-  margin: 20px;
+  padding: 30px;
 
+}
+
+mat-nav-list:hover {
+  background-color: rgba(0, 0, 0, 0.452);
 }
 
 .drawer-left {
