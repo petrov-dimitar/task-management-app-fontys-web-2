@@ -1,21 +1,24 @@
 mat-drawer-content {
   height: 100vh;
-
 }
 
 mat-nav-list {
   display: block;
   padding: 30px;
-
 }
 
 mat-nav-list:hover {
+  background-color: rgba(0, 0, 0, 0.452);
+  cursor: pointer;
+}
+
+mat-nav-list:focus {
+  outline: 0px !important;
   background-color: rgba(0, 0, 0, 0.452);
 }
 
 .drawer-left {
   background: rgba(54, 54, 69, 1);
-
 }
 
 .drawer-left a {
@@ -28,7 +31,6 @@ mat-nav-list:hover {
 
 .search-box {
   width: 20vw;
-
 }
 
 .search-box mat-icon {

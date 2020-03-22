@@ -1,16 +1,16 @@
 <mat-drawer-container class="example-container">
   <mat-drawer class="drawer-left" mode="side" opened>
-    <mat-nav-list>
+    <mat-nav-list routerLink="/dashboard">
       <a mat-list-item routerLink="/dashboard" style="height: 0;"
         ><mat-icon matListIcon> dashboard </mat-icon> Dashboard</a
       >
     </mat-nav-list>
-    <mat-nav-list>
+    <mat-nav-list routerLink="/task-list-component">
       <a mat-list-item routerLink="/task-list-component" style="height: 0;"
         ><mat-icon matListIcon> done_all </mat-icon> Tasks</a
       >
     </mat-nav-list>
-    <mat-nav-list>
+    <mat-nav-list routerLink="/department-list-component">
       <a
         mat-list-item
         routerLink="/department-list-component"
@@ -18,7 +18,7 @@
         ><mat-icon matListIcon> all_inbox </mat-icon> Departments</a
       >
     </mat-nav-list>
-    <mat-nav-list>
+    <mat-nav-list routerLink="/employee-list-component">
       <a mat-list-item routerLink="/employee-list-component" style="height: 0;"
         ><mat-icon matListIcon> account_box </mat-icon> Employees</a
       >
