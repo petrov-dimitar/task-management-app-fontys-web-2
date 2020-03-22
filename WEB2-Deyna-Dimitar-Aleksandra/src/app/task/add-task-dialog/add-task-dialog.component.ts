@@ -37,6 +37,7 @@ export class AddTaskDialogComponent implements OnInit {
   departments: Department[];
   selectedDepartment: Department;
   @ViewChild(MatTable) table: MatTable<any>;
+  selectedStartDate: Date;
 
   ngOnInit() {
     this.getTasks();
@@ -59,7 +60,7 @@ export class AddTaskDialogComponent implements OnInit {
   }
 
   addTask() {
-    this.tasks.push(new Task(this.newId, this.newTask, this.newTaskDescription, this.selectedDueDate, this.selectedEmployee, this.selectedDepartment));
+    this.tasks.push(new Task(this.newId, this.newTask, this.newTaskDescription, this.selectedStartDate, this.selectedDueDate, this.selectedEmployee, this.selectedDepartment));
     this.dialog.closeAll();
   }
 

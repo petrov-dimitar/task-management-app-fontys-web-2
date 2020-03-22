@@ -4,18 +4,22 @@ import { Department } from './department';
 export class Task {
     id: string;
     name: string;
+    sectionId?: number;
     description: string;
-    deadlineDate?: Date;
+    start?: any;
+    end?: any;
     assignedEmployee?: Employee;
     assignedDepartment?: Department;
 
-    constructor(id: string, taskName: string, description: string, deadlineDate: Date, assignedEmployee?: Employee, assignedDepartment?: Department) {
+    constructor(id: string, taskName: string, description: string, start?: Date, deadlineDate?: Date, assignedEmployee?: Employee, assignedDepartment?: Department, sectionId?: number) {
         this.id = id;
         this.name = taskName;
         this.description = description;
-        this.deadlineDate = deadlineDate;
+        this.start = start;
+        this.end = deadlineDate;
         this.assignedEmployee = assignedEmployee;
         this.assignedDepartment = assignedDepartment;
+        this.sectionId = sectionId;
     }
 }
 /*

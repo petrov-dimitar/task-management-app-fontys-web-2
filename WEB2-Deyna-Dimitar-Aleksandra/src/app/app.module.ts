@@ -24,6 +24,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AddDepartmentDialogComponent } from './department/add-department-dialog/add-department-dialog.component';
 import { AddEmployeeDialogComponent } from './employee/add-employee-dialog/add-employee-dialog.component';
 import { MatTableModule } from '@angular/material/table';
+import { CalendarComponent } from './task/calendar/calendar.component';
+import { NgxTimeSchedulerModule } from 'ngx-time-scheduler';
+import { MatCardModule } from '@angular/material/card';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +36,8 @@ import { MatTableModule } from '@angular/material/table';
     DashboardComponent,
     AddTaskDialogComponent,
     AddDepartmentDialogComponent,
-    AddEmployeeDialogComponent
+    AddEmployeeDialogComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +57,9 @@ import { MatTableModule } from '@angular/material/table';
     MatAutocompleteModule,
     ReactiveFormsModule,
     MatDialogModule,
-    MatTableModule
+    MatTableModule,
+    MatCardModule,
+    NgxTimeSchedulerModule
 
   ],
   providers: [],

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Task } from '../interfaces/task';
 import { Observable, of } from 'rxjs';
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class TaskService {
   constructor() { }
 
   tasks: Task[] = [
-    { id: '1', name: 'Send mail', description: 'A mail should be send to the director.', deadlineDate: new Date("2019-01-16"), assignedEmployee: { id: "2", name: "David" }, assignedDepartment: { id: "1", name: 'Human Resources' } },
+    { id: "1", name: 'Send mail', description: 'A mail should be send to the director.', start: moment().startOf('day'), end: moment().add(5, 'days').endOf('day'), assignedEmployee: { id: "2", name: "David" }, assignedDepartment: { id: "1", name: 'Human Resources' }, sectionId: 1 },
 
   ];
 

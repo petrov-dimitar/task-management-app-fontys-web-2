@@ -25,3 +25,8 @@ table {
 table td {
   padding: 25px;
 }
+
+.calendar {
+  width: 70vw !important;
+  margin: 30px auto;
+}

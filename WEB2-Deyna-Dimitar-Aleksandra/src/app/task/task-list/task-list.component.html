@@ -1,13 +1,16 @@
 <div class="wrapper">
   <mat-toolbar class="mat-elevation-z2 mat-toolbar-nav" color="">
     <h2>Tasks Overview</h2>
+
     <span class="example-spacer"></span>
     <button mat-raised-button color="primary" (click)="openDialog()">
       Create Task
     </button>
   </mat-toolbar>
   <h3>List Tasks</h3>
-
+  <mat-card class="calendar">
+    <app-calendar></app-calendar>
+  </mat-card>
   <table mat-table [dataSource]="tasks" class="mat-elevation-z8">
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
@@ -25,10 +28,16 @@
     </ng-container>
 
     <!-- Weight Column -->
-    <ng-container matColumnDef="deadlineDate">
+    <ng-container matColumnDef="start">
+      <th mat-header-cell *matHeaderCellDef>Start Date</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.start | date: "short" }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="end">
       <th mat-header-cell *matHeaderCellDef>Due Date</th>
       <td mat-cell *matCellDef="let element">
-        {{ element.deadlineDate | date: "short" }}
+        {{ element.end | date: "short" }}
       </td>
     </ng-container>
     <ng-container matColumnDef="assignedEmployee">
