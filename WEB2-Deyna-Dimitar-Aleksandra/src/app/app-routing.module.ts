@@ -9,7 +9,8 @@ const routes: Routes = [
   { path: 'task-list-component', component: TaskListComponent },
   { path: 'employee-list-component', component: EmployeeListComponent },
   { path: 'department-list-component', component: DepartmentListComponent },
-  { path: 'dashboard', component: DashboardComponent }
+  { path: 'dashboard', component: DashboardComponent },
+  { path: '', component: DashboardComponent }
 ];
 
 @NgModule({

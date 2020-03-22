@@ -20,7 +20,7 @@ import { MatTable } from '@angular/material/table';
 
 export class TaskListComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'deadlineDate', 'assignedEmployee', 'assignedDepartment', 'description'];
+  displayedColumns: string[] = ['id', 'name', 'deadlineDate', 'assignedEmployee', 'assignedDepartment', 'description', 'actions'];
 
 
   constructor(public taskService: TaskService, private employeeService: EmployeeService, private departmentService: DepartmentsService, public dialog: MatDialog) { }
@@ -56,6 +56,7 @@ export class TaskListComponent implements OnInit {
   deleteTask(task: Task) {
     let index = this.tasks.indexOf(task);
     this.tasks.splice(index, 1);
+    this.table.renderRows();
   }
   @ViewChild(MatTable) table: MatTable<any>;
   addTask() {
