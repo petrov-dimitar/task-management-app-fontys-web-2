@@ -24,6 +24,13 @@
   </mat-form-field>
 
   <mat-form-field appearance="outline">
+    <mat-label>Start date</mat-label>
+    <input matInput [matDatepicker]="picker2" [(ngModel)]="selectedStartDate" />
+    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker #picker2></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
     <mat-label>Due date</mat-label>
     <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDueDate" />
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -33,7 +40,7 @@
   <mat-form-field appearance="outline" class="example-full-width">
     <mat-label>Assign Employee</mat-label>
     <mat-select name="" id="" [(ngModel)]="selectedEmployee">
-      <mat-option [value]="employee.name" *ngFor="let employee of employees">{{
+      <mat-option [value]="employee" *ngFor="let employee of employees">{{
         employee.name
       }}</mat-option>
     </mat-select>
@@ -41,11 +48,19 @@
   <mat-form-field appearance="outline" class="example-full-width">
     <mat-label>Assign Department</mat-label>
     <mat-select name="" id="" [(ngModel)]="selectedDepartment">
-      <mat-option
-        [value]="department.name"
-        *ngFor="let department of departments"
-        >{{ department.name }}</mat-option
-      >
+      <mat-option [value]="department" *ngFor="let department of departments">{{
+        department.name
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Priority</mat-label>
+    <mat-select name="" id="" [(ngModel)]="selectedPriority">
+      <mat-option value="1">1</mat-option>
+      <mat-option value="2">2</mat-option>
+      <mat-option value="3">3</mat-option>
+      <mat-option value="4">4</mat-option>
+      <mat-option value="5">5</mat-option>
     </mat-select>
   </mat-form-field>
   <br />

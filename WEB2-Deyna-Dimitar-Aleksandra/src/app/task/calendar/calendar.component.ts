@@ -4,6 +4,7 @@ import { Item, Period, Section, Events, NgxTimeSchedulerService } from 'ngx-time
 import * as moment from 'moment';
 import { TaskService } from '../../services/task.service';
 import { Task } from 'src/app/interfaces/task';
+import { CalendarService } from 'src/app/services/calendar.service';
 
 @Component({
   selector: 'app-calendar',
@@ -16,29 +17,21 @@ export class CalendarComponent implements OnInit {
   sections: Section[];
   items: Item[] = [];
   tasks: Task[];
-  constructor(private service: NgxTimeSchedulerService, private taskService: TaskService) { }
+  constructor(private service: NgxTimeSchedulerService, private taskService: TaskService, private calendarService: CalendarService) { }
 
   ngOnInit() {
-    this.getTasks();
 
+    this.getTasks();
+    this.getCalendarItems();
     this.events.SectionClickEvent = (section) => { console.log(section); };
     this.events.ItemClicked = (item) => { console.log(item); };
     this.events.ItemDropped = (item) => { console.log(item); };
 
     this.periods = [
       {
-        name: '3 days',
-        timeFramePeriod: (60 * 3),
-        timeFrameOverall: (60 * 24 * 3),
-        timeFrameHeaders: [
-          'Do MMM',
-          'HH'
-        ],
-        classes: 'period-3day'
-      }, {
         name: '1 week',
         timeFrameHeaders: ['MMM YYYY', 'DD(ddd)'],
-        classes: '',
+        classes: 'button-period',
         timeFrameOverall: 1440 * 7,
         timeFramePeriod: 1440,
       }, {
@@ -66,21 +59,7 @@ export class CalendarComponent implements OnInit {
       id: 5
     }];
 
-    this.items = [{
-      id: 1,
-      sectionID: 1,
-      name: 'Item 1',
-      start: moment().startOf('day'),
-      end: moment().add(5, 'days').endOf('day'),
 
-    }, {
-      id: 3,
-      sectionID: 1,
-      name: 'Item 3',
-      start: moment().add(1, 'days').startOf('day'),
-      end: moment().add(3, 'days').endOf('day'),
-
-    }];
 
   }
 
@@ -104,19 +83,17 @@ export class CalendarComponent implements OnInit {
   }
 
   getTasks(): void {
+
     this.taskService.getTasks().subscribe(tasks => {
-
-
-      tasks.forEach(task => {
-
-        console.log(task);
-        this.service.itemPush(
-          {
-            id: Number(task.id), sectionID: 2, name: task.name, start: moment().startOf('day'),
-            end: moment().add(4, 'days').endOf('day'), classes: ""
-          }
-        )
-      })
+      console.log("Tasks Changed");
+      this.tasks = tasks;
     });
+  }
+
+  getCalendarItems(): void {
+    this.calendarService.getItems().subscribe(item => {
+      this.items = item;
+      console.log("Items Changed")
+    })
   }
 }

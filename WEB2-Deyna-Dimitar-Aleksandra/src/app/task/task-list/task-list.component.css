@@ -19,12 +19,11 @@ mat-form-field {
 
 table {
   margin: auto;
-  width: 70vw;
+  width: calc(70vw + 32px);
+
 }
 
-table td {
-  padding: 25px;
-}
+table td {}
 
 .calendar {
   width: 70vw !important;

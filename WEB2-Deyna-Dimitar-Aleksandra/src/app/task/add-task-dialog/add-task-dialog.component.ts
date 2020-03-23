@@ -7,7 +7,9 @@ import { Task } from 'src/app/interfaces/task';
 import { Employee } from 'src/app/interfaces/employee';
 import { Department } from 'src/app/interfaces/department';
 import { MatTable } from '@angular/material/table';
-
+import { CalendarService } from 'src/app/services/calendar.service';
+import { Item } from 'ngx-time-scheduler';
+import * as moment from 'moment';
 @Component({
   selector: 'app-add-task-dialog',
   templateUrl: './add-task-dialog.component.html',
@@ -18,7 +20,7 @@ export class AddTaskDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<AddTaskDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, public taskService: TaskService, private employeeService: EmployeeService, private departmentService: DepartmentsService, public dialog: MatDialog) { }
+    @Inject(MAT_DIALOG_DATA) public data: any, public taskService: TaskService, private employeeService: EmployeeService, private departmentService: DepartmentsService, public dialog: MatDialog, private calendarService: CalendarService) { }
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -38,6 +40,7 @@ export class AddTaskDialogComponent implements OnInit {
   selectedDepartment: Department;
   @ViewChild(MatTable) table: MatTable<any>;
   selectedStartDate: Date;
+  selectedPriority: number;
 
   ngOnInit() {
     this.getTasks();
@@ -60,7 +63,17 @@ export class AddTaskDialogComponent implements OnInit {
   }
 
   addTask() {
-    this.tasks.push(new Task(this.newId, this.newTask, this.newTaskDescription, this.selectedStartDate, this.selectedDueDate, this.selectedEmployee, this.selectedDepartment));
+    console.log(this.selectedEmployee);
+
+    this.taskService.addTask(new Task(this.newId, this.newTask, this.newTaskDescription, this.selectedStartDate, this.selectedDueDate, this.selectedEmployee, this.selectedDepartment, this.selectedPriority));
+    this.calendarService.addItem({
+      id: Number(this.newId),
+      sectionID: Number(this.selectedPriority),
+      name: this.newTask,
+      start: moment().startOf('day'),
+      end: this.selectedDueDate,
+      classes: 'red'
+    })
     this.dialog.closeAll();
   }
 
