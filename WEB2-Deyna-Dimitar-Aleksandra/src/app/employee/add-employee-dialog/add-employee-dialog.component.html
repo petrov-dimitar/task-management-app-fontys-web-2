@@ -1,0 +1,14 @@
+<input type="text" placeholder="Employee ID" [(ngModel)]="newId" />
+<input type="text" placeholder="Employee Name" [(ngModel)]="newName" />
+<input type="text" placeholder="Age" [(ngModel)]="newAge" />
+<input type="text" placeholder="City" [(ngModel)]="newCity" />
+
+<button (click)="addEmployee()">Create Employee</button>
+
+<select name="" id="" [(ngModel)]="selectedDepartment">
+  <option
+    *ngFor="let department of departmentsToChoose"
+    [value]="department.name"
+    >{{ department.name }}</option
+  >
+</select>

@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { TaskListComponent } from './task-list/task-list.component';
-import { DepartmentListComponent } from './department-list/department-list.component';
-import { EmployeeListComponent } from './employee-list/employee-list.component';
+import { TaskListComponent } from './task/task-list/task-list.component';
+import { DepartmentListComponent } from './department/department-list/department-list.component';
+import { EmployeeListComponent } from './employee/employee-list/employee-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -18,16 +18,26 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-
-
-
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { AddTaskDialogComponent } from './task/add-task-dialog/add-task-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AddDepartmentDialogComponent } from './department/add-department-dialog/add-department-dialog.component';
+import { AddEmployeeDialogComponent } from './employee/add-employee-dialog/add-employee-dialog.component';
+import { MatTableModule } from '@angular/material/table';
+import { CalendarComponent } from './task/calendar/calendar.component';
+import { NgxTimeSchedulerModule } from 'ngx-time-scheduler';
+import { MatCardModule } from '@angular/material/card';
 @NgModule({
   declarations: [
     AppComponent,
     TaskListComponent,
     DepartmentListComponent,
     EmployeeListComponent,
-    DashboardComponent
+    DashboardComponent,
+    AddTaskDialogComponent,
+    AddDepartmentDialogComponent,
+    AddEmployeeDialogComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +53,13 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatSelectModule,
     MatButtonModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatTableModule,
+    MatCardModule,
+    NgxTimeSchedulerModule
 
   ],
   providers: [],

@@ -1,0 +1,31 @@
+<div class="wrapper">
+  <mat-toolbar class="mat-elevation-z2 mat-toolbar-nav" color="">
+    <h2>Departments Overview</h2>
+    <span class="example-spacer"></span>
+    <button mat-raised-button color="primary" (click)="openDialog()">
+      Create Department
+    </button>
+  </mat-toolbar>
+
+  <h3>List Departments</h3>
+  <ul>
+    <li
+      (click)="selectDepartment(department)"
+      *ngFor="let department of departments"
+    >
+      <p>Department id: {{ department.id }}</p> 
+      <p> Department name: {{ department.name }} </p>
+      <p>Description: {{ department.description }}</p>
+      <p *ngFor="let emp of department.employees">
+        Assigned Employee: {{ emp.name }}
+      </p>
+      <span><button (click)="deleteDepartment(department)">Delete</button></span>
+    </li>
+  </ul>
+  <h3>Edit Departments</h3>
+  <input
+    *ngIf="selectedDepartment"
+    type="text"
+    [(ngModel)]="selectedDepartment.name"
+  />
+</div>

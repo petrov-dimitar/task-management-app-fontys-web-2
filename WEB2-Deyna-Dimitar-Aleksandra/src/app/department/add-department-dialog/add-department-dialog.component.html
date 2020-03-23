@@ -1,0 +1,35 @@
+<mat-toolbar class="mat-elevation-z2 mat-toolbar-nav" color="primary">
+    <h2>CREATE NEW DEPARTMENT</h2></mat-toolbar
+>
+<div class="form-wrapper">
+    <mat-form-field appearance="outline" class="example-full-width">
+         <mat-label>Department Id</mat-label>
+    <input matInput type="text" placeholder="Department id" [(ngModel)]="newID" />
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Department Name</mat-label>
+    <input matInput type="text" placeholder="Department name" [(ngModel)]="newDepartmentName" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Description</mat-label>
+    <textarea
+      matInput
+      type="text"
+      placeholder="Department Description"
+      [(ngModel)]="newDepartmentDescription"
+    >
+    </textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Assign Employees</mat-label>
+    <mat-select multiple [(ngModel)]="selectedEmployees">
+      <mat-option *ngFor="let employee of employees" [value]="employee">
+          {{ employee.name }}
+        </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="addDepartment()"> Create department
+  </button>
+  </div>

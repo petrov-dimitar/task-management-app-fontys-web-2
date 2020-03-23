@@ -1,31 +1,52 @@
 <mat-drawer-container class="example-container">
   <mat-drawer class="drawer-left" mode="side" opened>
-    <mat-nav-list>
+    <mat-nav-list routerLink="/dashboard">
       <a mat-list-item routerLink="/dashboard" style="height: 0;"
-        ><mat-icon matListIcon> Home </mat-icon> Dashboard</a
+        ><mat-icon matListIcon> dashboard </mat-icon> Dashboard</a
       >
     </mat-nav-list>
-    <mat-nav-list>
+    <mat-nav-list routerLink="/task-list-component">
       <a mat-list-item routerLink="/task-list-component" style="height: 0;"
-        ><mat-icon matListIcon> Home </mat-icon> Tasks</a
+        ><mat-icon matListIcon> done_all </mat-icon> Tasks</a
       >
     </mat-nav-list>
-    <mat-nav-list>
+    <mat-nav-list routerLink="/department-list-component">
       <a
         mat-list-item
         routerLink="/department-list-component"
         style="height: 0;"
-        ><mat-icon matListIcon> Home </mat-icon> Departments</a
+        ><mat-icon matListIcon> all_inbox </mat-icon> Departments</a
       >
     </mat-nav-list>
-    <mat-nav-list>
+    <mat-nav-list routerLink="/employee-list-component">
       <a mat-list-item routerLink="/employee-list-component" style="height: 0;"
-        ><mat-icon matListIcon> Home </mat-icon> Employees</a
+        ><mat-icon matListIcon> account_box </mat-icon> Employees</a
       >
     </mat-nav-list>
   </mat-drawer>
   <mat-drawer-content>
-    <mat-toolbar class="mat-elevation-z2 mat-toolbar-nav">My App</mat-toolbar>
+    <mat-toolbar class="mat-elevation-z2" color="primary">
+      <mat-form-field class="search-box">
+        <input
+          type="text"
+          placeholder="Pick one"
+          aria-label="Number"
+          matInput
+          [formControl]="myControl"
+          [matAutocomplete]="auto"
+        />
+        <mat-icon matListIcon> search </mat-icon>
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option
+            *ngFor="let option of filteredOptions | async"
+            [value]="option.name"
+          >
+            {{ option.id }} {{ option.name }} ({{ option.type }})
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </mat-toolbar>
+
     <!-- <app-task-list></app-task-list>
     <app-department-list></app-department-list>
     <app-employee-list></app-employee-list> -->

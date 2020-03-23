@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Employee } from '../interfaces/employee'
-import { TaskService } from '../services/task.service';
-import { Task } from '../interfaces/task';
-import { EmployeeService } from '../services/employee.service';
-import { DepartmentsService } from '../services/departments.service';
-import { Department } from '../interfaces/department';
+import { Employee } from '../../interfaces/employee'
+import { TaskService } from '../../services/task.service';
+import { Task } from '../../interfaces/task';
+import { EmployeeService } from '../../services/employee.service';
+import { DepartmentsService } from '../../services/departments.service';
+import { Department } from '../../interfaces/department';
+import { MatDialog } from '@angular/material/dialog';
+import { AddEmployeeDialogComponent } from '../add-employee-dialog/add-employee-dialog.component';
 
 @Component({
   selector: 'app-employee-list',
@@ -13,7 +15,7 @@ import { Department } from '../interfaces/department';
 })
 export class EmployeeListComponent implements OnInit {
 
-  constructor(private taskService: TaskService, private employeeService: EmployeeService, private departmentService: DepartmentsService) {
+  constructor(private taskService: TaskService, private employeeService: EmployeeService, private departmentService: DepartmentsService,  public dialog: MatDialog) {
   }
   newId: string;
   newName: string;
@@ -58,5 +60,15 @@ export class EmployeeListComponent implements OnInit {
   getDepartments(): void {
     this.departmentService.getDepartments()
       .subscribe(departments => this.departmentsToChoose = departments);
+  }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AddEmployeeDialogComponent, {
+      width: '60vw'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+
+    });
   }
 }

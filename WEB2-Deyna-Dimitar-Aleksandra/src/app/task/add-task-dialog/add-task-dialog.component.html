@@ -1,7 +1,8 @@
-<div class="wrapper">
-  <h2>Tasks</h2>
-  <h3>Create Task</h3>
+<mat-toolbar class="mat-elevation-z2 mat-toolbar-nav" color="primary"
+  ><h2>CREATE NEW TASK</h2></mat-toolbar
+>
 
+<div class="form-wrapper">
   <mat-form-field appearance="outline" class="example-full-width">
     <mat-label>Task ID</mat-label>
     <input matInput type="text" placeholder="Task id" [(ngModel)]="newId" />
@@ -23,6 +24,13 @@
   </mat-form-field>
 
   <mat-form-field appearance="outline">
+    <mat-label>Start date</mat-label>
+    <input matInput [matDatepicker]="picker2" [(ngModel)]="selectedStartDate" />
+    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker #picker2></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
     <mat-label>Due date</mat-label>
     <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDueDate" />
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -32,7 +40,7 @@
   <mat-form-field appearance="outline" class="example-full-width">
     <mat-label>Assign Employee</mat-label>
     <mat-select name="" id="" [(ngModel)]="selectedEmployee">
-      <mat-option [value]="employee.name" *ngFor="let employee of employees">{{
+      <mat-option [value]="employee" *ngFor="let employee of employees">{{
         employee.name
       }}</mat-option>
     </mat-select>
@@ -40,33 +48,23 @@
   <mat-form-field appearance="outline" class="example-full-width">
     <mat-label>Assign Department</mat-label>
     <mat-select name="" id="" [(ngModel)]="selectedDepartment">
-      <mat-option
-        [value]="department.name"
-        *ngFor="let department of departments"
-        >{{ department.name }}</mat-option
-      >
+      <mat-option [value]="department" *ngFor="let department of departments">{{
+        department.name
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Priority</mat-label>
+    <mat-select name="" id="" [(ngModel)]="selectedPriority">
+      <mat-option value="1">1</mat-option>
+      <mat-option value="2">2</mat-option>
+      <mat-option value="3">3</mat-option>
+      <mat-option value="4">4</mat-option>
+      <mat-option value="5">5</mat-option>
     </mat-select>
   </mat-form-field>
   <br />
-  <button mat-raised-button color="alert" (click)="addTask()">
+  <button mat-raised-button color="primary" (click)="addTask()">
     Create Task
   </button>
-
-  <h3>List Tasks</h3>
-  <ul>
-    <li (click)="selectTask(task)" *ngFor="let task of tasks">
-      <p>ID: {{ task.id }}</p>
-      <p>Task Name: {{ task.name }}</p>
-      <p>Description: {{ task.description }}</p>
-      <p>Due Date: {{ task.deadlineDate }}</p>
-      <p>Employee Assigned:{{ task.assignedEmployee }}</p>
-      <p>Department Assigned:{{ task.assignedDepartment }}</p>
-      <span><button (click)="deleteTask(task)">Delete</button></span>
-    </li>
-  </ul>
-  <h3>Edit Tasks</h3>
-  <input *ngIf="selectedTask" type="text" [(ngModel)]="selectedTask.name" />
-  <!-- <ul>
-    <li *ngFor="let task of tasks">{{task.id}} {{task.name}}</li>
-  </ul> -->
 </div>

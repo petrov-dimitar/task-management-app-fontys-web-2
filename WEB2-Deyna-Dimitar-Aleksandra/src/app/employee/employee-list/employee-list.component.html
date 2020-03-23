@@ -12,7 +12,9 @@
   <input type="text" placeholder="City" [(ngModel)]="newCity" />
 
   <button (click)="addEmployee()">Create Employee</button>
-
+  <button mat-raised-button color="primary" (click)="openDialog()">
+    Create Employee
+  </button>
   <select name="" id="" [(ngModel)]="selectedDepartment">
     <option
       *ngFor="let department of departmentsToChoose"
