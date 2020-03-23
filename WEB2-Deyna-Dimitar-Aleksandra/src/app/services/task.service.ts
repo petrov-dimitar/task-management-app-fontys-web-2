@@ -10,7 +10,7 @@ export class TaskService {
   constructor() { }
 
   tasks: Task[] = [
-    { id: "1", name: 'Send mail', description: 'A mail should be send to the director.', start: moment().startOf('day'), end: moment().add(5, 'days').endOf('day'), assignedEmployee: { id: "2", name: "David" }, assignedDepartment: { id: "1", name: 'Human Resources' }, sectionId: 1 },
+    { id: "1", name: 'Send mail', description: 'A mail should be send to the director.', start: moment().startOf('day'), end: moment().add(5, 'days').endOf('day'), assignedEmployee: { id: "2", first_name: "David" }, assignedDepartment: { id: "1", name: 'Human Resources' }, sectionId: 1 },
 
   ];
 

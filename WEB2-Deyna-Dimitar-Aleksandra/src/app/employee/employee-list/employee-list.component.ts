@@ -27,6 +27,7 @@ export class EmployeeListComponent implements OnInit {
   tasks: Task[];
   departmentsToChoose: Department[];
   selectedDepartment: Department;
+  panelOpenState = false; 
   // employees: string[] = ['Ivan', 'Jonh', 'Laura', 'Ricardo',] 
 
 

@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
       this.options.push(new ManagementEntity(task.id, task.name, this.stringTypeTask));
     })
     this.employees.filter(employee => {
-      this.options.push(new ManagementEntity(employee.id, employee.name, this.stringTypeEmployee));
+      this.options.push(new ManagementEntity(employee.id, employee.first_name, this.stringTypeEmployee));
     })
     this.departments.filter(department => {
       this.options.push(new ManagementEntity(department.id, department.name, this.stringTypeDepartment));

@@ -25,7 +25,7 @@
   <h3>List Employees</h3>
   <ul>
     <li (click)="selectEmployee(employee)" *ngFor="let employee of employees">
-      {{ employee.id }} {{ employee.name }} {{ employee.city }}
+      {{ employee.id }} {{ employee.first_name }} {{ employee.city }}
       {{ employee.department }}
       <span><button (click)="deleteEmployee(employee)">Delete</button></span>
     </li>
@@ -40,6 +40,27 @@
   <input
     *ngIf="selectedEmployee"
     type="text"
-    [(ngModel)]="selectedEmployee.name"
+    [(ngModel)]="selectedEmployee.first_name"
   />
+  <mat-accordion>
+    <mat-expansion-panel *ngFor = "let employee of employees" (click) = "selectEmployee(employee)">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{employee.first_name}}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{employee.department}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+  
+      <mat-form-field *ngIf = "selectedEmployee">
+        <input matInput [(ngModel)]="selectedEmployee.first_name">
+      </mat-form-field>
+      <p>Employee ID: {{employee.id}}</p>
+      <p>Department ID: {{employee.departmentId}}</p>
+      <p>First Name: {{employee.first_name}}</p>
+      <p>Last Name: {{employee.last_name}}</p>
+      <p>Age: {{employee.birth_date}}</p>
+    </mat-expansion-panel>
+  </mat-accordion>  
 </div>

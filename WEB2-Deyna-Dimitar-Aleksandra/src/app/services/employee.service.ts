@@ -9,7 +9,7 @@ export class EmployeeService {
 
   constructor() { }
 
-  employees: Employee[] = [{ id: '1', name: 'George', age: 20, city: 'Test City', department: 'HR' }, { id: '2', name: 'Ivan', age: 20, city: 'Test City', department: 'HR' }, { id: '3', name: 'Victoria', age: 20, city: 'Test City', department: 'HR' }];
+  employees: Employee[] = [{ id: '1', first_name: 'George', last_name: "Petkov", department_id: 3, birth_date: 20, city: 'Test City', department: 'HR' }, { id: '2', first_name: 'Ivan', last_name:"Milchev", department_id: 3, birth_date: 20, city: 'Test City', department: 'HR' }, { id: '3', first_name: 'Victoria', last_name:"Buchkova", department_id: 3, birth_date: 20, city: 'Test City', department: 'HR' }];
 
   getEmployee(): Observable<Employee[]> {
     return of(this.employees);
