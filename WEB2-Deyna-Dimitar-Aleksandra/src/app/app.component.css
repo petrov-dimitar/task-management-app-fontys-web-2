@@ -31,6 +31,9 @@ mat-nav-list:focus {
 
 .search-box {
   width: 20vw;
+  margin: auto;
+  bottom: 10px;
+
 }
 
 .search-box mat-icon {

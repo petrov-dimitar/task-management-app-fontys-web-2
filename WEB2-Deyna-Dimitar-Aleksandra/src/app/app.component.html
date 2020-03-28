@@ -1,5 +1,14 @@
 <mat-drawer-container class="example-container">
-  <mat-drawer class="drawer-left" mode="side" opened>
+  <mat-drawer
+    #drawer
+    class="drawer-left"
+    mode="side"
+    opened
+    fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)"
+  >
     <mat-nav-list routerLink="/dashboard">
       <a mat-list-item routerLink="/dashboard" style="height: 0;"
         ><mat-icon matListIcon> dashboard </mat-icon> Dashboard</a
@@ -26,10 +35,13 @@
   </mat-drawer>
   <mat-drawer-content>
     <mat-toolbar class="mat-elevation-z2" color="primary">
-      <mat-form-field class="search-box">
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-form-field appearance="legacy" class="search-box">
         <input
           type="text"
-          placeholder="Pick one"
+          placeholder="Search in database"
           aria-label="Number"
           matInput
           [formControl]="myControl"
