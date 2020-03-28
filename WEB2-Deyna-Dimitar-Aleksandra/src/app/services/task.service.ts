@@ -53,7 +53,13 @@ export class TaskService {
       );
   }
   addTaskToServer(task: Task): Observable<Task> {
-    return this.httpClient.post<Task>(this.url, {}, httpOptions)
+    return this.httpClient.post<Task>(this.url,
+      {
+        "department_id": "25",
+        "name": `${task.name}`,
+        "description": `${task.description}`,
+        "due_date": `${task.due_date}`
+      }, httpOptions)
       .pipe(
         catchError(this.handleError('addHero', task))
       );

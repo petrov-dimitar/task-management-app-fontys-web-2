@@ -14,12 +14,12 @@ export class Task {
     employees?: Number[];
     due_date?: any;
 
-    constructor(department_id?: Number, taskName?: string, description?: string, deadlineDate?: Date, start?: Date, assignedEmployee?: Employee, assignedDepartment?: Department, sectionId?: number) {
+    constructor(department_id?: Number, taskName?: string, description?: string, deadlineDate?: any, start?: Date, assignedEmployee?: Employee, assignedDepartment?: Department, sectionId?: number) {
 
         this.name = taskName;
         this.description = description;
         this.start = start;
-        this.end = deadlineDate;
+        this.due_date = deadlineDate;
         this.assignedEmployee = assignedEmployee;
         this.assignedDepartment = assignedDepartment;
         this.sectionId = sectionId;
