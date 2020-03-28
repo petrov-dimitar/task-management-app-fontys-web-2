@@ -64,8 +64,7 @@ export class AddTaskDialogComponent implements OnInit {
 
   addTask() {
     console.log(this.selectedEmployee);
-
-    this.taskService.addTask(new Task(this.newId, this.newTask, this.newTaskDescription, this.selectedStartDate, this.selectedDueDate, this.selectedEmployee, this.selectedDepartment, this.selectedPriority));
+    this.taskService.addTaskToServer(new Task(Number(this.selectedDepartment.id), this.newTask, this.newTaskDescription, this.selectedDueDate)).subscribe(res => { console.log(res) })
     this.calendarService.addItem({
       id: Number(this.newId),
       sectionID: Number(this.selectedPriority),

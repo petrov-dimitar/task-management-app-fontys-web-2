@@ -3,10 +3,10 @@
 >
 
 <div class="form-wrapper">
-  <mat-form-field appearance="outline" class="example-full-width">
+  <!-- <mat-form-field appearance="outline" class="example-full-width">
     <mat-label>Task ID</mat-label>
     <input matInput type="text" placeholder="Task id" [(ngModel)]="newId" />
-  </mat-form-field>
+  </mat-form-field> -->
   <mat-form-field appearance="outline" class="example-full-width">
     <mat-label>Task Name</mat-label>
     <input matInput type="text" placeholder="Task name" [(ngModel)]="newTask" />
@@ -24,20 +24,13 @@
   </mat-form-field>
 
   <mat-form-field appearance="outline">
-    <mat-label>Start date</mat-label>
-    <input matInput [matDatepicker]="picker2" [(ngModel)]="selectedStartDate" />
-    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-    <mat-datepicker #picker2></mat-datepicker>
-  </mat-form-field>
-
-  <mat-form-field appearance="outline">
     <mat-label>Due date</mat-label>
     <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDueDate" />
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
-  <mat-form-field appearance="outline" class="example-full-width">
+  <!-- <mat-form-field appearance="outline" class="example-full-width">
     <mat-label>Assign Employee</mat-label>
     <mat-select name="" id="" [(ngModel)]="selectedEmployee">
       <mat-option [value]="employee" *ngFor="let employee of employees">{{
@@ -51,6 +44,16 @@
       <mat-option [value]="department" *ngFor="let department of departments">{{
         department.name
       }}</mat-option>
+    </mat-select>
+  </mat-form-field> -->
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Assign Department</mat-label>
+    <mat-select name="" id="" [(ngModel)]="selectedDepartment">
+      <mat-option
+        [value]="department.id"
+        *ngFor="let department of departments"
+        >{{ department.name }}</mat-option
+      >
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="outline" class="example-full-width">
