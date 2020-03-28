@@ -15,9 +15,8 @@
     >
       <p>Department id: {{ department.id }}</p> 
       <p> Department name: {{ department.name }} </p>
-      <p>Description: {{ department.description }}</p>
-      <p *ngFor="let emp of department.employees">
-        Assigned Employee: {{ emp.name }}
+      <p>Building: {{ department.building }}</p>
+      <p>Assigned Employee: {{ department.employees }}
       </p>
       <span><button (click)="deleteDepartment(department)">Delete</button></span>
     </li>

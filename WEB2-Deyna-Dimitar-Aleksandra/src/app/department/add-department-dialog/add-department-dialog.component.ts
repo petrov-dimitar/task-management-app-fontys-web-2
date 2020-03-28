@@ -27,14 +27,14 @@ export class AddDepartmentDialogComponent implements OnInit {
     this.getDepartments();
   }
 
-  newID: string;
+  
   newDepartmentName: string;
-  newDepartmentDescription: string;
+  newDepartmentBuilding: string;
   tasks: Task[];
   departments: Department[];
   selectedDepartment: Department;
   employees: Employee[];
-  selectedEmployees: Employee[];
+  selectedEmployees: number[];
 
   getEmployee(): void {
     this.employeeService.getEmployee().subscribe(employees => this.employees = employees);
@@ -45,7 +45,8 @@ export class AddDepartmentDialogComponent implements OnInit {
   }
 
   addDepartment() {
-    this.departments.push(new Department(this.newID, this.newDepartmentName, this.newDepartmentDescription, [], this.selectedEmployees));
+    this.departmentService.addDepartmentToServer(new Department(this.newDepartmentName, this.newDepartmentBuilding)).subscribe(res => console.log(res));
+    this.departments.push(new Department(this.newDepartmentName, this.newDepartmentBuilding));
     console.log(this.selectedEmployees);
   }
 
