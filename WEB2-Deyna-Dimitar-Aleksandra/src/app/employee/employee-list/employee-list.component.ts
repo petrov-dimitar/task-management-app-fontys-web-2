@@ -29,9 +29,6 @@ export class EmployeeListComponent implements OnInit {
   selectedDepartment: Department;
   panelOpenState = false; 
   // employees: string[] = ['Ivan', 'Jonh', 'Laura', 'Ricardo',] 
-
-
-
   // employees: string[] = ['Ivan', 'Jonh', 'Laura', 'Ricardo',]
   ngOnInit(): void {
     this.getTasks();
@@ -43,15 +40,17 @@ export class EmployeeListComponent implements OnInit {
     this.taskService.getTasks().subscribe(tasks => this.tasks = tasks);
   }
   getEmployee(): void {
-    this.employeeService.getEmployee().subscribe(employees => this.employees = employees); //return employyes - assign the "new" employee to the employee
+    //this.employeeService.getEmployee().subscribe(employees => this.employees = employees); //return employyes - assign the "new" employee to the employee
+    this.employeeService.getEmployeesFromServer().subscribe(employees => this.employees = employees);
   }
   deleteEmployee(employee: Employee) {
+    this.employeeService.deleteEmployeeWithId(employee.id).subscribe(res => console.log(res));
     let index = this.employees.indexOf(employee);
     this.employees.splice(index, 1);
   }
 
   addEmployee() {
-    this.employees.push(new Employee(this.newId, this.newName, this.newCity, this.newAge, this.selectedDepartment))
+    this.employees.push(new Employee(this.newId, this.newName, this.newCity, this.newAge))
   }
 
   selectEmployee(employee) {
