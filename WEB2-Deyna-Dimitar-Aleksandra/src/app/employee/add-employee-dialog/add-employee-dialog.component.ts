@@ -41,9 +41,9 @@ export class AddEmployeeDialogComponent implements OnInit {
     this.departmentService.getDepartments()
       .subscribe(departments => this.departmentsToChoose = departments);
   }
-    addEmployee() {
-    this.employees.push(new Employee(this.newFirstName, this.newLastName, Number("25") , "20190707"))
-    this.employeeService.addEmployeeToServer(new Employee(this.newFirstName, this.newLastName, Number("25"), "20190707")).subscribe(res => console.log(res))
+  addEmployee() {
+
+    this.employeeService.addEmployeeToServer(new Employee(this.newFirstName, this.newLastName, Number("25"), "20190707")).subscribe(res => { this.dialog.closeAll() })
   }
 
 }

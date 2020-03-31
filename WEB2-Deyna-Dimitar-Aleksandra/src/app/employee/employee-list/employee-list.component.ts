@@ -15,7 +15,7 @@ import { AddEmployeeDialogComponent } from '../add-employee-dialog/add-employee-
 })
 export class EmployeeListComponent implements OnInit {
 
-  constructor(private taskService: TaskService, private employeeService: EmployeeService, private departmentService: DepartmentsService,  public dialog: MatDialog) {
+  constructor(private taskService: TaskService, private employeeService: EmployeeService, private departmentService: DepartmentsService, public dialog: MatDialog) {
   }
   newId: string;
   newName: string;
@@ -27,7 +27,7 @@ export class EmployeeListComponent implements OnInit {
   tasks: Task[];
   departmentsToChoose: Department[];
   selectedDepartment: Department;
-  panelOpenState = false; 
+  panelOpenState = false;
   // employees: string[] = ['Ivan', 'Jonh', 'Laura', 'Ricardo',] 
   // employees: string[] = ['Ivan', 'Jonh', 'Laura', 'Ricardo',]
   ngOnInit(): void {
@@ -68,7 +68,9 @@ export class EmployeeListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-
+      this.employeeService.getEmployeesFromServer().subscribe(emps => {
+        this.employees = emps;
+      })
     });
   }
 }

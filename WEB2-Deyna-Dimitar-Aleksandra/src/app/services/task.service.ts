@@ -38,11 +38,12 @@ export class TaskService {
   }
 
   getTasks(): Observable<Task[]> {
+
     return of(this.tasks);
   }
 
   addTask(task: Task) {
-    this.tasks.push(new Task(task.id, task.name, task.description, task.start, task.end, task.assignedEmployee, task.assignedDepartment, 4))
+
   }
 
   deleteTaskWithId(id: number): Observable<{}> {
@@ -63,6 +64,8 @@ export class TaskService {
       .pipe(
         catchError(this.handleError('addHero', task))
       );
+
+
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

@@ -50,10 +50,10 @@ export class TaskListComponent implements OnInit {
   }
 
   getEmployees(): void {
-    this.employeeService.getEmployee().subscribe(emp => this.employees = emp);
+    this.employeeService.getEmployeesFromServer().subscribe(emp => this.employees = emp);
   }
   getDepartments(): void {
-    this.departmentService.getDepartments().subscribe(dep => this.departments = dep);
+    this.departmentService.getDepartmentsFromServer().subscribe(dep => this.departments = dep);
   }
   deleteTask(task: Task) {
     this.taskService.deleteTaskWithId(Number(task.id)).subscribe(res => {
@@ -85,7 +85,11 @@ export class TaskListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      console.log(result);
+      this.taskService.getTasksFromServer().subscribe(tasks => {
+        this.tasks = tasks;
+        console.log(tasks);
+      })
       this.table.renderRows();
     });
   }
