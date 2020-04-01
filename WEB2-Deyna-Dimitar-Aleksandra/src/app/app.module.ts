@@ -64,7 +64,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,
     NgxTimeSchedulerModule,
     MatExpansionModule,
-    HttpClientModule
+    HttpClientModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -45,7 +45,7 @@ export class AddDepartmentDialogComponent implements OnInit {
   }
 
   addDepartment() {
-    this.departmentService.addDepartmentToServer(new Department(this.newDepartmentName, this.newDepartmentBuilding)).subscribe(res => console.log(res));
+    this.departmentService.addDepartmentToServer(new Department(this.newDepartmentName, this.newDepartmentBuilding)).subscribe(res => this.dialog.closeAll());
     this.departments.push(new Department(this.newDepartmentName, this.newDepartmentBuilding));
     console.log(this.selectedEmployees);
   }

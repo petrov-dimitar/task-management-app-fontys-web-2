@@ -6,25 +6,39 @@
       Create Department
     </button>
   </mat-toolbar>
-
-  <h3>List Departments</h3>
-  <ul>
-    <li
+<br>
+  <mat-accordion>
+    <mat-expansion-panel
       (click)="selectDepartment(department)"
       *ngFor="let department of departments"
     >
+    <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{ department.name}}
+    </mat-panel-title>
+    <mat-panel-description>
+      Department id: {{department.id}}
+    </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <!-- <mat-panel-title *ngIf="selectedDepartment">
+      <input matInput [hidden]="true" [(ngModel)]="selectedDepartment.name">
+    </mat-panel-title> -->
+    <br>
       <p>Department id: {{ department.id }}</p> 
       <p> Department name: {{ department.name }} </p>
       <p>Building: {{ department.building }}</p>
       <p>Assigned Employee: {{ department.employees }}
       </p>
-      <span><button (click)="deleteDepartment(department)">Delete</button></span>
-    </li>
-  </ul>
-  <h3>Edit Departments</h3>
+      <mat-action-row>
+      <button mat-button color="primary" (click)="deleteDepartment(department)">D E L E T E </button>
+     </mat-action-row>
+<!-- 
   <input
     *ngIf="selectedDepartment"
     type="text"
     [(ngModel)]="selectedDepartment.name"
-  />
+  /> -->
+</mat-expansion-panel>
+  </mat-accordion>
 </div>

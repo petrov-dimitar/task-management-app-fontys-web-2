@@ -1,7 +1,9 @@
 input {
   display: block;
 }
-
+.mat-action-row {
+  place-content:  right ;
+}
 .wrapper {}
 
 mat-form-field {

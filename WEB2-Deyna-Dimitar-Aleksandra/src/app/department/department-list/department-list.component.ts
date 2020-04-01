@@ -63,6 +63,7 @@ export class DepartmentListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+      this.departmentService.getDepartmentsFromServer().subscribe(departments => {this.departments=departments});
 
     });
   }

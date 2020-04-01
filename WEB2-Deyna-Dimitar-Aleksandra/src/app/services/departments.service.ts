@@ -14,7 +14,7 @@ const httpOptions = {
 })
 export class DepartmentsService {
   constructor(public httpClient: HttpClient) { }
-  url = "http://i875395.hera.fhict.nl/api/3375471/department";
+  url = "http://i875395.hera.fhict.nl/api/3595234/department";
   departments: Department[] = [];
     getDepartmentsFromServer(): Observable<Department[]> {
 
