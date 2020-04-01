@@ -5,6 +5,8 @@ import * as moment from 'moment';
 import { TaskService } from '../../services/task.service';
 import { Task } from 'src/app/interfaces/task';
 import { CalendarService } from 'src/app/services/calendar.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AddTaskDialogComponent } from '../add-task-dialog/add-task-dialog.component';
 
 @Component({
   selector: 'app-calendar',
@@ -17,7 +19,7 @@ export class CalendarComponent implements OnInit {
   sections: Section[];
   items: Item[] = [];
   tasks: Task[];
-  constructor(private service: NgxTimeSchedulerService, private taskService: TaskService, private calendarService: CalendarService) { }
+  constructor(private service: NgxTimeSchedulerService, private taskService: TaskService, private calendarService: CalendarService, public dialog: MatDialog) { }
 
   ngOnInit() {
 
@@ -96,4 +98,22 @@ export class CalendarComponent implements OnInit {
       console.log("Items Changed")
     })
   }
+  openDialog(): void {
+
+    const dialogRef = this.dialog.open(AddTaskDialogComponent, {
+      width: '60vw',
+      data: { name: 'testData' }
+
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.taskService.getTasksFromServer().subscribe(tasks => {
+        this.tasks = tasks;
+        console.log(tasks);
+      })
+
+    });
+  }
+
 }

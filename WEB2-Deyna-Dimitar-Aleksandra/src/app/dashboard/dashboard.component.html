@@ -1,20 +1,27 @@
-<h2>Tasks</h2>
-<ul>
-  <li *ngFor="let task of tasks">
-    <span>{{ task.id }} {{ task.name }}</span>
-  </li>
-</ul>
+<mat-toolbar class="mat-elevation-z2 mat-toolbar-nav" color="">
+  <h2>Dashboard</h2>
+</mat-toolbar>
 
-<h2>Employees</h2>
-<ul>
-  <li *ngFor="let employee of employees">
-    <span>{{ employee.id }} {{ employee.name }} {{ employee.department }}</span>
-  </li>
-</ul>
+<div class="wrapper">
+  <ul>
+    <li *ngFor="let task of tasks">
+      <span>{{ task.id }} {{ task.name }}</span>
+    </li>
+  </ul>
 
-<h2>Departments</h2>
-<ul>
-  <li *ngFor="let department of departments">
-    <span>{{ department.id }} {{ department.name }}</span>
-  </li>
-</ul>
+  <mat-card>
+    <mat-toolbar class="mat-elevation-z2 mat-toolbar-nav" color="">
+      <h2>Tasks Overview</h2>
+
+      <span class="example-spacer"></span>
+      <button mat-raised-button color="accent" (click)="openDialog()">
+        Create Task
+      </button>
+    </mat-toolbar>
+    <app-calendar class="calendar"></app-calendar>
+  </mat-card>
+
+  <mat-card>
+    <app-employee-list></app-employee-list>
+  </mat-card>
+</div>

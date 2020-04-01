@@ -5,3 +5,17 @@ input {
 .wrapper {
   padding: 15px;
 }
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar-nav {
+  background-color: white;
+}
+
+.accordion-wrapper {
+  margin-top: 30px !important;
+
+
+}

@@ -1,12 +1,16 @@
 <!-- <p>employee-list works!</p> -->
-<div class="wrapper">
-  <h2>Employees</h2>
 
-  <button mat-raised-button color="primary" (click)="openDialog()">
+<mat-toolbar class="mat-elevation-z2 mat-toolbar-nav" color="">
+  <h2>Employee Overview</h2>
+
+  <span class="example-spacer"></span>
+  <button mat-raised-button color="warn" (click)="openDialog()">
     Create Employee
   </button>
+</mat-toolbar>
 
-  <mat-accordion>
+<div class="accordion-wrapper">
+  <mat-accordion class="accordion">
     <mat-expansion-panel
       *ngFor="let employee of employees"
       (click)="selectEmployee(employee)"
