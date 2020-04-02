@@ -44,3 +44,7 @@ mat-nav-list:focus {
 .mat-form-field-infix {
   padding: 0px !important;
 }
+
+.router-wrapper {
+  /* padding: 16px; */
+}

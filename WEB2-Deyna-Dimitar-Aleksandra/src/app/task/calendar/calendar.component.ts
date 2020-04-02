@@ -47,19 +47,7 @@ export class CalendarComponent implements OnInit {
     this.sections = [{
       name: 'A',
       id: 1
-    }, {
-      name: 'B',
-      id: 2
-    }, {
-      name: 'C',
-      id: 3
-    }, {
-      name: 'D',
-      id: 4
-    }, {
-      name: 'E',
-      id: 5
-    }];
+    }]
 
 
 
@@ -86,16 +74,17 @@ export class CalendarComponent implements OnInit {
 
   getTasks(): void {
 
-    this.taskService.getTasks().subscribe(tasks => {
-      console.log("Tasks Changed");
+    this.taskService.getTasksFromServer().subscribe(tasks => {
+      console.log(tasks);
       this.tasks = tasks;
+
     });
   }
 
   getCalendarItems(): void {
     this.calendarService.getItems().subscribe(item => {
       this.items = item;
-      console.log("Items Changed")
+      console.log(item);
     })
   }
   openDialog(): void {
@@ -111,6 +100,7 @@ export class CalendarComponent implements OnInit {
       this.taskService.getTasksFromServer().subscribe(tasks => {
         this.tasks = tasks;
         console.log(tasks);
+
       })
 
     });
