@@ -1,0 +1,25 @@
+input {
+  display: block;
+}
+
+.wrapper {
+  padding: 15px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar-nav {
+  background-color: white;
+}
+
+.accordion-wrapper {
+
+  padding: 16px;
+
+}
+
+.mat-input {
+  display: block;
+}

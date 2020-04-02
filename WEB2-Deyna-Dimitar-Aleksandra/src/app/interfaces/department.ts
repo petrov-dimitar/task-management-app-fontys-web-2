@@ -2,19 +2,15 @@ import { Task } from './task';
 import { Employee } from './employee';
 
 export class Department {
-    id: string;
+    id: number;
     name: string;
-    description?: string;
+    building?: string;
     tasks?: Task[];
-    employees?: Employee[]
+    employees?: number[]
 
 
-    constructor(id: string, name: string, description?: string, tasks?: Task[], employees?: Employee[]) {
-        this.id = id;
+    constructor(name: string, building?: string) {
         this.name = name;
-        this.description = description;
-        this.tasks = tasks;
-        this.employees = employees;
-
+        this.building = building;
     }
 }

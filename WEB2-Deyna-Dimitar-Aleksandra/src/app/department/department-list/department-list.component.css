@@ -1,0 +1,26 @@
+input {
+  display: block;
+}
+
+.mat-action-row {
+  place-content: right;
+}
+
+.wrapper {}
+
+mat-form-field {
+  display: block;
+  width: 50%;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar-nav {
+  background: white;
+}
+
+.accordion-wrapper {
+  padding: 16px !important;
+}

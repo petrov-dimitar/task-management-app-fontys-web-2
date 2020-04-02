@@ -1,15 +1,14 @@
 export class Employee {
-    constructor(id, name, age?, city?, department?) {
-        this.id = id
-        this.name = name
-        this.age = age
-        this.city = city
-        this.department = department
+    constructor(first_name, last_name?, department_id?, birth_date?) {
+        this.first_name = first_name
+        this.last_name = last_name
+        this.birth_date = birth_date 
+        this.department_id = department_id
     }
 
-    id: string
-    name: string
-    age?: number
-    city?: string
-    department?: string
+    id: number
+    first_name: string
+    last_name?: string
+    birth_date?: number 
+    department_id?: number
 }
