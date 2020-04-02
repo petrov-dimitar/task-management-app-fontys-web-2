@@ -29,7 +29,7 @@ import { NgxTimeSchedulerModule } from 'ngx-time-scheduler';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { HttpClientModule } from '@angular/common/http';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,7 +65,7 @@ import { HttpClientModule } from '@angular/common/http';
     NgxTimeSchedulerModule,
     MatExpansionModule,
     HttpClientModule,
-    
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

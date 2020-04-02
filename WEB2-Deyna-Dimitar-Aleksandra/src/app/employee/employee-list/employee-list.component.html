@@ -24,14 +24,43 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
 
-      <mat-form-field *ngIf="selectedEmployee">
-        <input matInput [(ngModel)]="selectedEmployee.first_name" />
-      </mat-form-field>
       <p>Employee ID: {{ employee.id }}</p>
-      <p>Department ID: {{ employee.departmentId }}</p>
-      <p>First Name: {{ employee.first_name }}</p>
-      <p>Last Name: {{ employee.last_name }}</p>
       <p>Age: {{ employee.birth_date }}</p>
+      <mat-form-field class="mat-input" *ngIf="selectedEmployee">
+        <mat-label>Employee First Name (Editable):</mat-label>
+        <input
+          matInput
+          (change)="updateEmployee(employee)"
+          [(ngModel)]="selectedEmployee.first_name"
+        />
+      </mat-form-field>
+      <mat-form-field class="mat-input" *ngIf="selectedEmployee">
+        <mat-label>Employee Last Name (Editable):</mat-label>
+        <input
+          matInput
+          (change)="updateEmployee(employee)"
+          [(ngModel)]="selectedEmployee.last_name"
+        />
+      </mat-form-field>
+      <mat-form-field class="mat-input" *ngIf="selectedEmployee">
+        <mat-label>Employee AGE (Editable):</mat-label>
+        <input
+          matInput
+          (change)="updateEmployee(employee)"
+          [(ngModel)]="selectedEmployee.birth_date"
+        />
+      </mat-form-field>
+      <mat-form-field class="mat-input" *ngIf="selectedEmployee">
+        <mat-label>Employee Department (Editable):</mat-label>
+        <mat-select name="" id="" [(ngModel)]="selectedEmployee.department_id">
+          <mat-option
+            [value]="department.id"
+            *ngFor="let department of departments"
+            (mousedown)="updateEmployee(employee)"
+            >{{ department.id }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
 
       <mat-action-row>
         <button mat-button color="warn" (click)="deleteEmployee(employee)">

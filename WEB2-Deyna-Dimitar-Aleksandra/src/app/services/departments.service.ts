@@ -16,24 +16,34 @@ export class DepartmentsService {
   constructor(public httpClient: HttpClient) { }
   url = "http://i875395.hera.fhict.nl/api/3595234/department";
   departments: Department[] = [];
-    getDepartmentsFromServer(): Observable<Department[]> {
+  getDepartmentsFromServer(): Observable<Department[]> {
 
-      return this.httpClient.get<Department[]>(this.url);
-    }
-    deleteDepartmentWithId(id: number): Observable<{}> {
-      const url = `${this.url}?id=${id}`;
-      return this.httpClient.delete(url);
-    }
-    addDepartmentToServer(department: Department): Observable<Department> {
-      return this.httpClient.post<Department>(this.url,
-        {
-          "name": `${department.name}`,
-          "building": `${department.building}`,
-        }, httpOptions).pipe(
-          catchError(this.handleError('deleteDepartment', department))
-        );
-    }
-    
+    return this.httpClient.get<Department[]>(this.url);
+  }
+  deleteDepartmentWithId(id: number): Observable<{}> {
+    const url = `${this.url}?id=${id}`;
+    return this.httpClient.delete(url);
+  }
+  addDepartmentToServer(department: Department): Observable<Department> {
+    return this.httpClient.post<Department>(this.url,
+      {
+        "name": `${department.name}`,
+        "building": `${department.building}`,
+      }, httpOptions).pipe(
+        catchError(this.handleError('deleteDepartment', department))
+      );
+  }
+
+  UpdateDepartmentToServer(department: Department): Observable<Department> {
+    const url = `${this.url}?id=${department.id}`;
+    return this.httpClient.put<Department>(url,
+      {
+        "name": `${department.name}`,
+        "building": `${department.building}`,
+      }, httpOptions).pipe(
+        catchError(this.handleError('deleteDepartment', department))
+      );
+  }
   getDepartments(): Observable<Department[]> {
     return of(this.departments);
   }

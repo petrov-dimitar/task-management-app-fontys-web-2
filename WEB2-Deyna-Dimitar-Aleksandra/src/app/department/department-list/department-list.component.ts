@@ -6,6 +6,7 @@ import { DepartmentsService } from '../../services/departments.service'
 import { Employee } from '../../interfaces/employee';
 import { EmployeeService } from '../../services/employee.service';
 import { AddDepartmentDialogComponent } from '../add-department-dialog/add-department-dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { AddDepartmentDialogComponent } from '../add-department-dialog/add-depar
 })
 export class DepartmentListComponent implements OnInit {
 
-  constructor(private employeeService: EmployeeService, private departmentService: DepartmentsService, public dialog: MatDialog) { }
+  constructor(private employeeService: EmployeeService, private departmentService: DepartmentsService, public dialog: MatDialog, private _snackBar: MatSnackBar) { }
   newID: number;
   newDepartmentName: string;
   newDepartmentBuilding: string;
@@ -48,7 +49,7 @@ export class DepartmentListComponent implements OnInit {
     this.departmentService.getDepartmentsFromServer()
       .subscribe(departments => this.departments = departments);
   }
-  
+
   deleteDepartment(department: Department) {
     this.departmentService.deleteDepartmentWithId(department.id).subscribe(res => {
       let index = this.departments.indexOf(department);
@@ -63,8 +64,22 @@ export class DepartmentListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.departmentService.getDepartmentsFromServer().subscribe(departments => {this.departments=departments});
+      this.departmentService.getDepartmentsFromServer().subscribe(departments => { this.departments = departments });
 
+    });
+  }
+
+  updateDepartment(department: Department) {
+    console.log(department.name, department.building);
+    this.departmentService.UpdateDepartmentToServer(department).subscribe(res => {
+
+      this.departmentService.getDepartmentsFromServer().subscribe(departments => { this.departments = departments });
+      this._snackBar.open("Successful Update!", "Close");
+    })
+  }
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
     });
   }
 }

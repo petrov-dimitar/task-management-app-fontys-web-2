@@ -6,39 +6,59 @@
       Create Department
     </button>
   </mat-toolbar>
-<br>
+  <br />
   <mat-accordion>
     <mat-expansion-panel
       (click)="selectDepartment(department)"
       *ngFor="let department of departments"
     >
-    <mat-expansion-panel-header>
-    <mat-panel-title>
-      {{ department.name}}
-    </mat-panel-title>
-    <mat-panel-description>
-      Department id: {{department.id}}
-    </mat-panel-description>
-    </mat-expansion-panel-header>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ department.name }}
+        </mat-panel-title>
+        <mat-panel-description>
+          Department id: {{ department.id }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
 
-    <!-- <mat-panel-title *ngIf="selectedDepartment">
+      <!-- <mat-panel-title *ngIf="selectedDepartment">
       <input matInput [hidden]="true" [(ngModel)]="selectedDepartment.name">
     </mat-panel-title> -->
-    <br>
-      <p>Department id: {{ department.id }}</p> 
-      <p> Department name: {{ department.name }} </p>
-      <p>Building: {{ department.building }}</p>
-      <p>Assigned Employee: {{ department.employees }}
-      </p>
+      <br />
+      <p>ID: {{ department.id }}</p>
+      <mat-form-field *ngIf="selectedDepartment">
+        <mat-label>Name (Edit and press enter):</mat-label>
+        <input
+          matInput
+          (change)="updateDepartment(department)"
+          [(ngModel)]="selectedDepartment.name"
+        />
+      </mat-form-field>
+      <mat-form-field *ngIf="selectedDepartment">
+        <mat-label>Building (Edit and press enter):</mat-label>
+        <input
+          matInput
+          (change)="updateDepartment(department)"
+          [(ngModel)]="selectedDepartment.building"
+        />
+      </mat-form-field>
+
+      <p>Assigned Employee: {{ department.employees }}</p>
       <mat-action-row>
-      <button mat-button color="primary" (click)="deleteDepartment(department)">D E L E T E </button>
-     </mat-action-row>
-<!-- 
+        <button
+          mat-button
+          color="primary"
+          (click)="deleteDepartment(department)"
+        >
+          D E L E T E
+        </button>
+      </mat-action-row>
+      <!-- 
   <input
     *ngIf="selectedDepartment"
     type="text"
     [(ngModel)]="selectedDepartment.name"
   /> -->
-</mat-expansion-panel>
+    </mat-expansion-panel>
   </mat-accordion>
 </div>

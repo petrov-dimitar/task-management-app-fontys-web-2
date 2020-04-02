@@ -41,6 +41,18 @@ export class EmployeeService {
         catchError(this.handleError('deleteEmployee', employe))
       );
   }
+  UpdateEmployeeToServer(employe: Employee): Observable<Employee> {
+    const url = `${this.url}?id=${employe.id}`;
+    return this.httpClient.put<Employee>(url,
+      {
+        "first_name": `${employe.first_name}`,
+        "last_name": `${employe.last_name}`,
+        "birth_date": `${employe.birth_date}`,
+        "department_id": `${employe.department_id}`,
+      }, httpOptions).pipe(
+        catchError(this.handleError('deleteEmployee', employe))
+      );
+  }
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.log(`failed: ${error.message}`);
