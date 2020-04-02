@@ -17,10 +17,9 @@ export class AddEmployeeDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<AddEmployeeDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any, public taskService: TaskService, private employeeService: EmployeeService, private departmentService: DepartmentsService, public dialog: MatDialog) { }
-  newId: string;
-  newName: string;
+  newFirstName: string;
+  newLastName: string;
   newAge: number;
-  newCity: string;
   departmentId: number;
   employees: Employee[];
   selectedEmployee: Employee;
@@ -42,8 +41,9 @@ export class AddEmployeeDialogComponent implements OnInit {
     this.departmentService.getDepartments()
       .subscribe(departments => this.departmentsToChoose = departments);
   }
-    addEmployee() {
-    this.employees.push(new Employee(this.newId, this.newName, this.newCity, this.newAge, this.selectedDepartment))
+  addEmployee() {
+
+    this.employeeService.addEmployeeToServer(new Employee(this.newFirstName, this.newLastName, Number("25"), "20190707")).subscribe(res => { this.dialog.closeAll() })
   }
 
 }

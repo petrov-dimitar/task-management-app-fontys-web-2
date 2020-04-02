@@ -2,21 +2,24 @@ import { Employee } from './employee';
 import { Department } from './department';
 
 export class Task {
-    id: string;
-    name: string;
+    id?: Number;
+    name?: string;
     sectionId?: number;
-    description: string;
+    description?: string;
     start?: any;
     end?: any;
     assignedEmployee?: Employee;
     assignedDepartment?: Department;
+    department_id?: Number;
+    employees?: Number[];
+    due_date?: any;
 
-    constructor(id: string, taskName: string, description: string, start?: Date, deadlineDate?: Date, assignedEmployee?: Employee, assignedDepartment?: Department, sectionId?: number) {
-        this.id = id;
+    constructor(department_id?: Number, taskName?: string, description?: string, deadlineDate?: any, start?: Date, assignedEmployee?: Employee, assignedDepartment?: Department, sectionId?: number) {
+
         this.name = taskName;
         this.description = description;
         this.start = start;
-        this.end = deadlineDate;
+        this.due_date = deadlineDate;
         this.assignedEmployee = assignedEmployee;
         this.assignedDepartment = assignedDepartment;
         this.sectionId = sectionId;

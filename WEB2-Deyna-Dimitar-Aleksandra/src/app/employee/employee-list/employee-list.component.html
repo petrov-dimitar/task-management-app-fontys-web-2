@@ -1,45 +1,72 @@
 <!-- <p>employee-list works!</p> -->
-<div class="wrapper">
-  <h2>Employees</h2>
-  <ol>
-    <!-- <li *ngFor="let employee of employees">{{ employee }}</li> -->
-  </ol>
 
-  <input type="text" placeholder="Employee ID" [(ngModel)]="newId" />
-  <input type="text" placeholder="Employee Name" [(ngModel)]="newName" />
-  <input type="text" placeholder="Age" [(ngModel)]="newAge" />
-  <!-- <input type="text" placeholder="Department ID" [(ngModel)]="departmentId"/> -->
-  <input type="text" placeholder="City" [(ngModel)]="newCity" />
+<mat-toolbar class="mat-elevation-z2 mat-toolbar-nav" color="">
+  <h2>Employee Overview</h2>
 
-  <button (click)="addEmployee()">Create Employee</button>
-  <button mat-raised-button color="primary" (click)="openDialog()">
+  <span class="example-spacer"></span>
+  <button mat-raised-button color="warn" (click)="openDialog()">
     Create Employee
   </button>
-  <select name="" id="" [(ngModel)]="selectedDepartment">
-    <option
-      *ngFor="let department of departmentsToChoose"
-      [value]="department.name"
-      >{{ department.name }}</option
-    >
-  </select>
-  <h3>List Employees</h3>
-  <ul>
-    <li (click)="selectEmployee(employee)" *ngFor="let employee of employees">
-      {{ employee.id }} {{ employee.name }} {{ employee.city }}
-      {{ employee.department }}
-      <span><button (click)="deleteEmployee(employee)">Delete</button></span>
-    </li>
-  </ul>
-  <h3>Edit Employee</h3>
-  <input
-    *ngIf="selectedEmployee"
-    type="text"
-    [(ngModel)]="selectedEmployee.id"
-  />
+</mat-toolbar>
 
-  <input
-    *ngIf="selectedEmployee"
-    type="text"
-    [(ngModel)]="selectedEmployee.name"
-  />
+<div class="accordion-wrapper">
+  <mat-accordion class="accordion">
+    <mat-expansion-panel
+      *ngFor="let employee of employees"
+      (click)="selectEmployee(employee)"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ employee.first_name }}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{ employee.department }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <p>Employee ID: {{ employee.id }}</p>
+      <p>Age: {{ employee.birth_date }}</p>
+      <mat-form-field class="mat-input" *ngIf="selectedEmployee">
+        <mat-label>Employee First Name (Editable):</mat-label>
+        <input
+          matInput
+          (change)="updateEmployee(employee)"
+          [(ngModel)]="selectedEmployee.first_name"
+        />
+      </mat-form-field>
+      <mat-form-field class="mat-input" *ngIf="selectedEmployee">
+        <mat-label>Employee Last Name (Editable):</mat-label>
+        <input
+          matInput
+          (change)="updateEmployee(employee)"
+          [(ngModel)]="selectedEmployee.last_name"
+        />
+      </mat-form-field>
+      <mat-form-field class="mat-input" *ngIf="selectedEmployee">
+        <mat-label>Employee AGE (Editable):</mat-label>
+        <input
+          matInput
+          (change)="updateEmployee(employee)"
+          [(ngModel)]="selectedEmployee.birth_date"
+        />
+      </mat-form-field>
+      <mat-form-field class="mat-input" *ngIf="selectedEmployee">
+        <mat-label>Employee Department (Editable):</mat-label>
+        <mat-select name="" id="" [(ngModel)]="selectedEmployee.department_id">
+          <mat-option
+            [value]="department.id"
+            *ngFor="let department of departments"
+            (mousedown)="updateEmployee(employee)"
+            >{{ department.id }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+
+      <mat-action-row>
+        <button mat-button color="warn" (click)="deleteEmployee(employee)">
+          DELETE
+        </button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 
@@ -11,6 +11,7 @@ import { Task } from './interfaces/task';
 import { Employee } from './interfaces/employee';
 import { Department } from './interfaces/department';
 import { ManagementEntity } from './interfaces/managementEntity';
+import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -18,8 +19,8 @@ import { ManagementEntity } from './interfaces/managementEntity';
 })
 export class AppComponent implements OnInit {
   title = 'WEB2-Deyna-Dimitar-Aleksandra';
-
-  constructor(public taskService: TaskService, private employeeService: EmployeeService, private departmentService: DepartmentsService) { }
+  @ViewChild('drawer') drawer: any;
+  constructor(public taskService: TaskService, private employeeService: EmployeeService, private departmentService: DepartmentsService, private breakpointObserver: BreakpointObserver) { }
 
   myControl = new FormControl();
   options: ManagementEntity[] = [];
@@ -41,10 +42,10 @@ export class AppComponent implements OnInit {
       this.options.push(new ManagementEntity(task.id, task.name, this.stringTypeTask));
     })
     this.employees.filter(employee => {
-      this.options.push(new ManagementEntity(employee.id, employee.name, this.stringTypeEmployee));
+      this.options.push(new ManagementEntity(Number(employee.id), employee.first_name, this.stringTypeEmployee));
     })
     this.departments.filter(department => {
-      this.options.push(new ManagementEntity(department.id, department.name, this.stringTypeDepartment));
+      this.options.push(new ManagementEntity(Number(department.id), department.name, this.stringTypeDepartment));
     })
 
     this.filteredOptions = this.myControl.valueChanges
@@ -70,4 +71,12 @@ export class AppComponent implements OnInit {
 
     return this.options.filter(option => option.name.toLowerCase().includes(filterValue));
   }
+  closeSideNav() {
+    if (this.drawer._mode == 'over') {
+      this.drawer.close();
+    }
+  }
+  public isHandset$: Observable<boolean> = this.breakpointObserver
+    .observe(Breakpoints.Handset)
+    .pipe(map((result: BreakpointState) => result.matches));
 }

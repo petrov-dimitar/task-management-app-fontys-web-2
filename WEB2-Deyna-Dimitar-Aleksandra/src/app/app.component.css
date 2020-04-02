@@ -31,6 +31,9 @@ mat-nav-list:focus {
 
 .search-box {
   width: 20vw;
+  margin: auto;
+  bottom: 10px;
+
 }
 
 .search-box mat-icon {
@@ -40,4 +43,8 @@ mat-nav-list:focus {
 
 .mat-form-field-infix {
   padding: 0px !important;
+}
+
+.router-wrapper {
+  /* padding: 16px; */
 }

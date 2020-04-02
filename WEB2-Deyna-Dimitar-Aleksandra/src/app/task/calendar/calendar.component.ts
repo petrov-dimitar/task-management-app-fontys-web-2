@@ -5,6 +5,8 @@ import * as moment from 'moment';
 import { TaskService } from '../../services/task.service';
 import { Task } from 'src/app/interfaces/task';
 import { CalendarService } from 'src/app/services/calendar.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AddTaskDialogComponent } from '../add-task-dialog/add-task-dialog.component';
 
 @Component({
   selector: 'app-calendar',
@@ -17,7 +19,7 @@ export class CalendarComponent implements OnInit {
   sections: Section[];
   items: Item[] = [];
   tasks: Task[];
-  constructor(private service: NgxTimeSchedulerService, private taskService: TaskService, private calendarService: CalendarService) { }
+  constructor(private service: NgxTimeSchedulerService, private taskService: TaskService, private calendarService: CalendarService, public dialog: MatDialog) { }
 
   ngOnInit() {
 
@@ -45,19 +47,7 @@ export class CalendarComponent implements OnInit {
     this.sections = [{
       name: 'A',
       id: 1
-    }, {
-      name: 'B',
-      id: 2
-    }, {
-      name: 'C',
-      id: 3
-    }, {
-      name: 'D',
-      id: 4
-    }, {
-      name: 'E',
-      id: 5
-    }];
+    }]
 
 
 
@@ -84,16 +74,36 @@ export class CalendarComponent implements OnInit {
 
   getTasks(): void {
 
-    this.taskService.getTasks().subscribe(tasks => {
-      console.log("Tasks Changed");
+    this.taskService.getTasksFromServer().subscribe(tasks => {
+      console.log(tasks);
       this.tasks = tasks;
+
     });
   }
 
   getCalendarItems(): void {
     this.calendarService.getItems().subscribe(item => {
       this.items = item;
-      console.log("Items Changed")
+      console.log(item);
     })
   }
+  openDialog(): void {
+
+    const dialogRef = this.dialog.open(AddTaskDialogComponent, {
+      width: '60vw',
+      data: { name: 'testData' }
+
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.taskService.getTasksFromServer().subscribe(tasks => {
+        this.tasks = tasks;
+        console.log(tasks);
+
+      })
+
+    });
+  }
+
 }

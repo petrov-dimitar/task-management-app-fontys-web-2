@@ -13,15 +13,16 @@ export class CalendarService {
   items: Item[] = [];
 
   constructor(private taskService: TaskService, private service: NgxTimeSchedulerService) {
-    this.taskService.getTasks().subscribe(tasks => {
+    this.taskService.getTasksFromServer().subscribe(tasks => {
       this.tasks = tasks;
       this.tasks.forEach(task => {
         this.items.push({
           id: Number(task.id),
-          sectionID: Number(task.sectionId),
+          sectionID: 1,
           name: task.name,
-          start: task.start,
-          end: task.end,
+          start: moment().add(1, 'days').startOf('day'),
+          end: moment(task.due_date),
+
           classes: 'red'
         })
       })

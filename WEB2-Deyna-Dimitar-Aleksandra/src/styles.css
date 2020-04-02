@@ -17,3 +17,7 @@ body {
 .red {
   background-color: #673ab7 !important;
 }
+
+mat-card {
+  padding: 0px !important;
+}

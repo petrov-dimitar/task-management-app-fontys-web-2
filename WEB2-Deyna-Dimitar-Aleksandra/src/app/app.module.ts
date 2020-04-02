@@ -27,6 +27,9 @@ import { MatTableModule } from '@angular/material/table';
 import { CalendarComponent } from './task/calendar/calendar.component';
 import { NgxTimeSchedulerModule } from 'ngx-time-scheduler';
 import { MatCardModule } from '@angular/material/card';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,8 +62,10 @@ import { MatCardModule } from '@angular/material/card';
     MatDialogModule,
     MatTableModule,
     MatCardModule,
-    NgxTimeSchedulerModule
-
+    NgxTimeSchedulerModule,
+    MatExpansionModule,
+    HttpClientModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,6 +2,10 @@ input {
   display: block;
 }
 
+.mat-action-row {
+  place-content: right;
+}
+
 .wrapper {}
 
 mat-form-field {
@@ -15,4 +19,8 @@ mat-form-field {
 
 .mat-toolbar-nav {
   background: white;
+}
+
+.accordion-wrapper {
+  padding: 16px !important;
 }

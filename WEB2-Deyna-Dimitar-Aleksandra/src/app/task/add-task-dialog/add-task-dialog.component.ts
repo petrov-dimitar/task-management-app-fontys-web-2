@@ -48,14 +48,14 @@ export class AddTaskDialogComponent implements OnInit {
     this.getDepartments();
   }
   getTasks(): void {
-    this.taskService.getTasks().subscribe(tasks => this.tasks = tasks);
+    this.taskService.getTasksFromServer().subscribe(tasks => this.tasks = tasks);
   }
 
   getEmployees(): void {
-    this.employeeService.getEmployee().subscribe(emp => this.employees = emp);
+    this.employeeService.getEmployeesFromServer().subscribe(emp => this.employees = emp);
   }
   getDepartments(): void {
-    this.departmentService.getDepartments().subscribe(dep => this.departments = dep);
+    this.departmentService.getDepartmentsFromServer().subscribe(dep => this.departments = dep);
   }
   deleteTask(task: Task) {
     let index = this.tasks.indexOf(task);
@@ -64,8 +64,10 @@ export class AddTaskDialogComponent implements OnInit {
 
   addTask() {
     console.log(this.selectedEmployee);
+    let date_formatted = moment(this.selectedDueDate).format(('YYYYMMDD'));
+    console.log(date_formatted);
 
-    this.taskService.addTask(new Task(this.newId, this.newTask, this.newTaskDescription, this.selectedStartDate, this.selectedDueDate, this.selectedEmployee, this.selectedDepartment, this.selectedPriority));
+    this.taskService.addTaskToServer(new Task(Number(this.selectedDepartment.id), this.newTask, this.newTaskDescription, date_formatted)).subscribe(res => { console.log(res); this.dialog.closeAll(); })
     this.calendarService.addItem({
       id: Number(this.newId),
       sectionID: Number(this.selectedPriority),
@@ -74,7 +76,7 @@ export class AddTaskDialogComponent implements OnInit {
       end: this.selectedDueDate,
       classes: 'red'
     })
-    this.dialog.closeAll();
+
   }
 
   selectTask(task) {

@@ -20,11 +20,11 @@ import { MatTable } from '@angular/material/table';
 
 export class TaskListComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'start', 'end', 'assignedEmployee', 'assignedDepartment', 'description', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'assignedEmployee', 'assignedDepartment', 'end', 'actions'];
 
 
   constructor(public taskService: TaskService, private employeeService: EmployeeService, private departmentService: DepartmentsService, public dialog: MatDialog) { }
-  newId: string;
+  newId: Number;
   newTask: string;
   newTaskDescription: string;
   newDeadlineDate: Date;
@@ -40,27 +40,34 @@ export class TaskListComponent implements OnInit {
 
   ngOnInit() {
 
+
     this.getTasks();
     this.getEmployees();
     this.getDepartments();
   }
   getTasks(): void {
-    this.taskService.getTasks().subscribe(tasks => this.tasks = tasks);
+    this.taskService.getTasksFromServer().subscribe(tasks => { this.tasks = tasks; console.log(tasks) });
   }
 
   getEmployees(): void {
-    this.employeeService.getEmployee().subscribe(emp => this.employees = emp);
+    this.employeeService.getEmployeesFromServer().subscribe(emp => this.employees = emp);
   }
   getDepartments(): void {
-    this.departmentService.getDepartments().subscribe(dep => this.departments = dep);
+    this.departmentService.getDepartmentsFromServer().subscribe(dep => this.departments = dep);
   }
   deleteTask(task: Task) {
-    let index = this.tasks.indexOf(task);
-    this.tasks.splice(index, 1);
-    this.table.renderRows();
+    this.taskService.deleteTaskWithId(Number(task.id)).subscribe(res => {
+      let index = this.tasks.indexOf(task);
+      this.tasks.splice(index, 1);
+      this.table.renderRows();
+
+    });
+
+
   }
   @ViewChild(MatTable) table: MatTable<any>;
   addTask() {
+
     this.tasks.push(new Task(this.newId, this.newTask, this.newTaskDescription, this.selectedstartDate, this.selectedDueDate, this.selectedEmployee, this.selectedDepartment));
   }
 
@@ -78,7 +85,11 @@ export class TaskListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      console.log(result);
+      this.taskService.getTasksFromServer().subscribe(tasks => {
+        this.tasks = tasks;
+        console.log(tasks);
+      })
       this.table.renderRows();
     });
   }
