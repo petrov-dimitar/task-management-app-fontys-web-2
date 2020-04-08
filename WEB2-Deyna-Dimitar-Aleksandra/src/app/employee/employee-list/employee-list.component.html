@@ -10,6 +10,15 @@
 </mat-toolbar>
 
 <div class="accordion-wrapper">
+  <mat-form-field class="mat-input">
+    <mat-label>Search by First Name</mat-label>
+    <input
+      matInput
+      type="text"
+      [(ngModel)]="searchValue"
+      (keyup)="searchEmployee()"
+    />
+  </mat-form-field>
   <mat-accordion class="accordion">
     <mat-expansion-panel
       *ngFor="let employee of employees"
