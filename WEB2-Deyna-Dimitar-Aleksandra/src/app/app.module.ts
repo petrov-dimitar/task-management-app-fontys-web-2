@@ -30,6 +30,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ReadmeComponentComponent } from './readme-component/readme-component.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +41,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     AddTaskDialogComponent,
     AddDepartmentDialogComponent,
     AddEmployeeDialogComponent,
-    CalendarComponent
+    CalendarComponent,
+    ReadmeComponentComponent
   ],
   imports: [
     BrowserModule,
