@@ -57,8 +57,6 @@ export class EmployeeListComponent implements OnInit {
     else {
       this.getEmployee();
     }
-
-
   }
   getEmployee(): void {
     //this.employeeService.getEmployee().subscribe(employees => this.employees = employees); //return employyes - assign the "new" employee to the employee

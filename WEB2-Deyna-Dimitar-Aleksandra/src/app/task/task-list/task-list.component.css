@@ -17,10 +17,14 @@ mat-form-field {
   background: white;
 }
 
-table {
+.table-wrapper {
   margin: auto;
-  width: calc(70vw + 32px);
+  width: calc(60vw + 32px);
 
+}
+
+table {
+  width: 100%;
 }
 
 table td {}
@@ -28,4 +32,14 @@ table td {}
 .calendar {
   width: 70vw !important;
   margin: 30px auto;
+}
+
+
+@media (max-width: 600px) {
+
+  .table-wrapper {
+    margin: auto;
+    width: 100vw;
+
+  }
 }
