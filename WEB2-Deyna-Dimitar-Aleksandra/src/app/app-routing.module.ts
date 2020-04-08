@@ -5,6 +5,8 @@ import { EmployeeListComponent } from './employee/employee-list/employee-list.co
 import { DepartmentListComponent } from './department/department-list/department-list.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CalendarComponent } from './task/calendar/calendar.component';
+import { ReadmeComponentComponent } from './readme-component/readme-component.component';
+
 
 const routes: Routes = [
   { path: 'task-list-component', component: TaskListComponent },
@@ -12,7 +14,8 @@ const routes: Routes = [
   { path: 'department-list-component', component: DepartmentListComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: '', component: DashboardComponent },
-  { path: 'calendar', component: CalendarComponent }
+  { path: 'calendar', component: CalendarComponent },
+  { path: 'readme', component: ReadmeComponentComponent }
 ];
 
 @NgModule({

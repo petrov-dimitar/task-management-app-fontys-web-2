@@ -25,6 +25,7 @@ export class DepartmentListComponent implements OnInit {
   selectedDepartment: Department;
   employees: Employee[];
   selectedEmployees: number[];
+  searchValue: string;
 
   ngOnInit(): void {
     this.getDepartments();
@@ -43,6 +44,23 @@ export class DepartmentListComponent implements OnInit {
   selectDepartment(department) {
     this.selectedDepartment = department;
 
+  }
+
+  searchDepartment(): void {
+    if (this.searchValue !== "" && this.searchValue.length > 1) {
+      let returnArray: Department[] = [];
+      this.departments.filter(dep => {
+        if (dep.name.match(this.searchValue)) {
+          returnArray.push(dep)
+        }
+
+      })
+      this.departments = returnArray
+      console.log(this.employees);
+    }
+    else {
+      this.getDepartments();
+    }
   }
 
   getDepartments(): void {

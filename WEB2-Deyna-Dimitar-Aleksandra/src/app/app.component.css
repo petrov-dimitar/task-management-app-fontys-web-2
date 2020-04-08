@@ -8,7 +8,7 @@ mat-nav-list {
 }
 
 mat-nav-list:hover {
-  background-color: rgba(0, 0, 0, 0.452);
+  background-color: #001133;
   cursor: pointer;
 }
 
@@ -18,11 +18,11 @@ mat-nav-list:focus {
 }
 
 .drawer-left {
-  background: rgba(54, 54, 69, 1);
+  background: rgb(166,173,237, 0.2);
 }
 
 .drawer-left a {
-  color: white;
+  color: black;
 }
 
 .mat-toolbar-nav {
@@ -47,4 +47,7 @@ mat-nav-list:focus {
 
 .router-wrapper {
   /* padding: 16px; */
+}
+mat-drawer-container {
+  background:white !important;
 }
