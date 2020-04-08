@@ -29,6 +29,7 @@ export class EmployeeListComponent implements OnInit {
   departments: Department[];
   selectedDepartment: Department;
   panelOpenState = false;
+  searchValue: string = "";
 
   // employees: string[] = ['Ivan', 'Jonh', 'Laura', 'Ricardo',] 
   // employees: string[] = ['Ivan', 'Jonh', 'Laura', 'Ricardo',]
@@ -40,6 +41,22 @@ export class EmployeeListComponent implements OnInit {
   }
   getTasks(): void {
     this.taskService.getTasks().subscribe(tasks => this.tasks = tasks);
+  }
+  searchEmployee(): void {
+    if (this.searchValue !== "" && this.searchValue.length > 1) {
+      let returnArray: Employee[] = [];
+      this.employees.filter(emp => {
+        if (emp.first_name.match(this.searchValue)) {
+          returnArray.push(emp)
+        }
+
+      })
+      this.employees = returnArray
+      console.log(this.employees);
+    }
+    else {
+      this.getEmployee();
+    }
   }
   getEmployee(): void {
     //this.employeeService.getEmployee().subscribe(employees => this.employees = employees); //return employyes - assign the "new" employee to the employee
@@ -85,5 +102,6 @@ export class EmployeeListComponent implements OnInit {
       })
     });
   }
+
 
 }

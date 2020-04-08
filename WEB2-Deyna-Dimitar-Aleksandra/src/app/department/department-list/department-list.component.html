@@ -1,13 +1,22 @@
 <div class="wrapper">
-  <mat-toolbar class="mat-elevation-z2 mat-toolbar-nav" color="">
+  <mat-toolbar class="mat-elevation-z2 mat-toolbar-nav mat-toolbar-gray">
     <h2>Departments Overview</h2>
     <span class="example-spacer"></span>
-    <button mat-raised-button color="primary" (click)="openDialog()">
+    <button mat-raised-button class="color-dark-blue" (click)="openDialog()">
       Create Department
     </button>
   </mat-toolbar>
 
   <div class="accordion-wrapper">
+    <mat-form-field class="mat-input">
+      <mat-label>Search by Department Name</mat-label>
+      <input
+        matInput
+        type="text"
+        [(ngModel)]="searchValue"
+        (keyup)="searchDepartment()"
+      />
+    </mat-form-field>
     <mat-accordion>
       <mat-expansion-panel
         (click)="selectDepartment(department)"
@@ -48,7 +57,7 @@
         <mat-action-row>
           <button
             mat-button
-            color="primary"
+            color="warn"
             (click)="deleteDepartment(department)"
           >
             D E L E T E

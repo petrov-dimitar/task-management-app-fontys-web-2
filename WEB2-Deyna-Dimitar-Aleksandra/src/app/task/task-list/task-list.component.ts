@@ -9,7 +9,7 @@ import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTaskDialogComponent } from '../add-task-dialog/add-task-dialog.component';
 import { ViewChild } from '@angular/core';
-import { MatTable } from '@angular/material/table';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-task-list',
@@ -36,7 +36,7 @@ export class TaskListComponent implements OnInit {
   departments: Department[];
   selectedDepartment: Department;
   selectedstartDate: Date = new Date();
-
+  dataSource: any;
 
   ngOnInit() {
 
@@ -46,7 +46,7 @@ export class TaskListComponent implements OnInit {
     this.getDepartments();
   }
   getTasks(): void {
-    this.taskService.getTasksFromServer().subscribe(tasks => { this.tasks = tasks; console.log(tasks) });
+    this.taskService.getTasksFromServer().subscribe(tasks => { this.tasks = tasks; console.log(tasks); this.dataSource = new MatTableDataSource(this.tasks); });
   }
 
   getEmployees(): void {
@@ -88,11 +88,15 @@ export class TaskListComponent implements OnInit {
       console.log(result);
       this.taskService.getTasksFromServer().subscribe(tasks => {
         this.tasks = tasks;
+        this.dataSource = new MatTableDataSource(this.tasks);
         console.log(tasks);
       })
       this.table.renderRows();
     });
   }
-
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
 }

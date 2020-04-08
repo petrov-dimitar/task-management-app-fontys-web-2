@@ -1,7 +1,7 @@
 <mat-drawer-container class="example-container">
   <mat-drawer
     #drawer
-    class="drawer-left"
+    class="drawer-left color-dark-blue"
     mode="side"
     opened
     fixedInViewport="true"
@@ -32,31 +32,17 @@
         ><mat-icon matListIcon> account_box </mat-icon> Employees</a
       >
     </mat-nav-list>
+    <mat-nav-list routerLink="/readme">
+      <a mat-list-item routerLink="/readme" style="height: 0;"
+        ><mat-icon matListIcon> info </mat-icon> Readme</a
+      >
+    </mat-nav-list>
   </mat-drawer>
   <mat-drawer-content>
-    <mat-toolbar class="mat-elevation-z2" color="primary">
+    <mat-toolbar class="mat-elevation-z2 color-dark-blue">
       <button mat-icon-button (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <mat-form-field appearance="legacy" class="search-box">
-        <input
-          type="text"
-          placeholder="Search in database"
-          aria-label="Number"
-          matInput
-          [formControl]="myControl"
-          [matAutocomplete]="auto"
-        />
-        <mat-icon matListIcon> search </mat-icon>
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option
-            *ngFor="let option of filteredOptions | async"
-            [value]="option.name"
-          >
-            {{ option.id }} {{ option.name }} ({{ option.type }})
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
     </mat-toolbar>
 
     <!-- <app-task-list></app-task-list>

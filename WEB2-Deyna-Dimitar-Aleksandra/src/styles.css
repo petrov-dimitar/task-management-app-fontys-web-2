@@ -15,9 +15,26 @@ body {
 }
 
 .red {
-  background-color: #673ab7 !important;
+  background-color: rgb(229,230,236) !important;
+  color: black !important;
 }
 
 mat-card {
   padding: 0px !important;
+}
+.color-white{
+  background-color: rgb(244,244,247) !important;
+}
+.color-dark-blue{
+  background-color:	rgb(2,53,100) !important;
+  color: white !important;
+}
+.color-dark-blue a{
+  color: white !important;
+}
+.mat-toolbar-gray{
+  background-color: rgb(229,230,236) !important;
+}
+.mat-drawer-side {
+  border-right: solid 0.5px white;
 }
